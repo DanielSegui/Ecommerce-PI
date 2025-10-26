@@ -19,3 +19,11 @@ Participa en les revisions de codi.
 - **Funcions:**
 Manté al dia el README.md, el pla de riscos i altres documents.
 Assegura que el repositori continga sempre instruccions clares d’instal·lació i ús.
+
+## Suport / Documentació
+- **Responsable:** Documentador  
+- **Funcions:**  
+Manté actualitzat el README.md, pla de riscos i altres documents.  
+Assegura que el repositori contingui instruccions clares per instal·lació i ús.
+Documenta els processos de merge, branques i commits importants.  
+Dona suport a l’equip amb recursos, tutorials o explicacions quan calgui.  
