@@ -3,25 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <title>Formulari de contacte</title>
+  <link rel="stylesheet" href="estils.css">
 </head>
 <body>
-  <h1>Contacta amb nosaltres</h1>
-  <form id="formContacte">
-    <label for="nom">Nom:</label>
-    <input type="text" id="nom" name="nom" required minlength="3"><br><br>
+  <div class="container">
+    <h1>Contacta amb nosaltres</h1>
+    <form id="formContacte">
+      <div class="form-group">
+        <label for="nom">Nom:</label>
+        <input type="text" id="nom" name="nom" required minlength="3">
+      </div>
 
-    <label for="email">Correu:</label>
-    <input type="email" id="email" name="email" required><br><br>
+      <div class="form-group">
+        <label for="email">Correu:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
 
-    <label for="edat">Edat:</label>
-    <input type="number" id="edat" name="edat" min="18" max="99"><br><br>
+      <div class="form-group">
+        <label for="edat">Edat:</label>
+        <input type="number" id="edat" name="edat" min="18" max="99">
+      </div>
 
-    <label for="telefon">Telèfon:</label>
-    <input type="tel" id="telefon" name="telefon" pattern="[0-9]{9}" placeholder="Ex: 600123456" required><br><br>
+      <div class="form-group">
+        <label for="telefon">Telèfon:</label>
+        <input type="tel" id="telefon" name="telefon" pattern="[0-9]{9}" placeholder="Ex: 600123456" required>
+      </div>
 
-    <button type="submit">Enviar</button>
-  </form>
+      <div class="form-group simple-checkbox">
+        <input type="checkbox" id="consentiment" name="consentiment" required>
+        <label for="consentiment">Accepte el tractament de les meves dades</label>
+      </div>
+
+
+      <button type="submit">Enviar</button>
+    </form>
+  </div>
 
   <script src="validacio.js"></script>
 </body>
 </html>
+
