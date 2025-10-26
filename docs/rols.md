@@ -19,11 +19,3 @@ Participa en les revisions de codi.
 - **Funcions:**
 Manté al dia el README.md, el pla de riscos i altres documents.
 Assegura que el repositori continga sempre instruccions clares d’instal·lació i ús.
-
-## Documentació / Suport
-- **Responsable:** Membre D
-- **Funcions:**
-  - Redactar la documentació del projecte (`README.md`, `RISKS.md`, `rols.md`...).
-  - Exportar i mantenir el cronograma Gantt.
-  - Donar suport en proves i integració.
-
