@@ -1,6 +1,6 @@
 # Ecommerce-PI
 ## Cronograma
-![Gantt inicial](./docs/gantt-SA1.png)
+![Gantt inicial](./docs/EcommercePI.png)
 
 ## Rols
 Consultar [docs/rols.md](./docs/rols.md)
