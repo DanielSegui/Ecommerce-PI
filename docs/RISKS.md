@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Riscos generals del projecte
 
 1. **Retards en el desenvolupament**  
@@ -12,7 +11,7 @@
 
 4. **Manca de documentació**  
    Pot dificultar la comprensió del projecte per a nous membres.
-=======
+
 # Riscos generals del projecte
 
 1. **Retards en el desenvolupament**  
@@ -26,4 +25,3 @@
 
 4. **Manca de documentació**  
    Pot dificultar la comprensió del projecte per a nous membres.
->>>>>>> origin/main
