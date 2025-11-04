@@ -11,15 +11,3 @@ Consultar [docs/RISKS.md](./docs/RISKS.md) i [docs/riscos_individuals.md](./docs
 ## Tauler Kanban
 ![Kanban](./docs/kanban-captura.png)
 =======
-Ecommerce-PI
-Cronograma
-Gantt inicial
-
-Rols
-Consultar docs/rols.md
-
-Riscos
-Consultar docs/RISKS.md i docs/riscos_individuals.md
-
-Tauler Kanban
-Kanban
