@@ -10,3 +10,4 @@ Consultar [docs/RISKS.md](./docs/RISKS.md) i [docs/riscos_individuals.md](./docs
 
 ## Tauler Kanban
 ![Kanban](./docs/kanban-captura.png)
+=======
