@@ -1,0 +1,35 @@
+services:
+  nginx:
+    image: nginx:1.27-alpine
+    container_name: webserver
+    ports:
+      - "80:80"                      # canvia a "8080:80" si tens el 80 ocupat
+    volumes:
+      - ./web:/var/www/php:cached
+      - ./.docker/nginx/conf.d:/etc/nginx/conf.d:ro
+    depends_on:
+      php:
+        condition: service_healthy
+    networks: [web]
+    restart: unless-stopped
+
+  php:
+    build:
+      context: ./.docker/php
+    container_name: php
+    working_dir: /var/www/php
+    expose: ["9000"]
+    volumes:
+      - ./php:/var/www/php:cached
+      - ./.docker/php/conf.d/error_reporting.ini:/usr/local/etc/php/conf.d/error_reporting.ini
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://127.0.0.1:9001/fpm-ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+    networks: [web]
+    restart: unless-stopped
+
+networks:
+  web:
+    driver: bridge
