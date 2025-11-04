@@ -1,11 +1,11 @@
 services:
   nginx:
     image: nginx:1.27-alpine
-    container_name: webserver
+    container_name: webserver-projecte
     ports:
       - "80:80"                      # canvia a "8080:80" si tens el 80 ocupat
     volumes:
-      - ./web:/var/www/php:cached
+      - ./web:/var/www/php 
       - ./.docker/nginx/conf.d:/etc/nginx/conf.d:ro
     depends_on:
       php:
@@ -16,11 +16,11 @@ services:
   php:
     build:
       context: ./.docker/php
-    container_name: php
+    container_name: php-projecte
     working_dir: /var/www/php
     expose: ["9000"]
     volumes:
-      - ./php:/var/www/php:cached
+      - ./web:/var/www/php 
       - ./.docker/php/conf.d/error_reporting.ini:/usr/local/etc/php/conf.d/error_reporting.ini
     healthcheck:
       test: ["CMD", "curl", "-fsS", "http://127.0.0.1:9001/fpm-ping"]
