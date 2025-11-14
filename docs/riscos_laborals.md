@@ -1,4 +1,4 @@
-# Riscos físics addicionals
+# Riscos laborals
 
 | Risc                         | Probabilitat | Impacte | Mesura preventiva | Responsable | Seguiment |
 |------------------------------|--------------|---------|-------------------|-------------|-----------|
