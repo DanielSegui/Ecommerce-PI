@@ -30,3 +30,4 @@ Assegura que el repositori contingui instruccions clares per instal·lació i ú
 Documenta els processos de merge, branques i commits importants.  
 Dona suport a l’equip amb recursos, tutorials o explicacions quan calgui.  
 (Sprint1 Nehuen)
+
