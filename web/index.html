@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>D&N Motors</title>
-    <link rel="stylesheet" href="./css/pp.css">
+    <link rel="icon" type="image/png" href="./imgs/logoPest.png">
+    <link rel="stylesheet" href="css/pp.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
@@ -12,24 +13,65 @@
 <body>
     <header class="header">
         <div class="logo">
-            <img src="logos/logo.png" alt="D&N Motors Logo">
+            <img src="./imgs/logo3.png" alt="D&N Motors Logo">
         </div>
-        <div class="menu-icon">☰</div>
+        <div class="menu-icon">
+            <span>
+                <img src="./imgs/menu.png" alt="Logo" width="45" height="40">
+            </span>
+        </div>
         <div class="icons">
-            <span class="icon">👤</span>
-            <span class="icon">⚙️</span>
+            <span>
+                <img src="./imgs/perfil.png" alt="Logo" width="45" height="40">
+            </span>
+            <span>
+                <img src="./imgs/configuracion.png" alt="Logo" width="45" height="40">
+            </span>
         </div>
     </header>
 
-    <section class="hero">
-        <div class="overlay"></div>
-        <img src="img/coche-negro.jpg" alt="Coche negro" class="hero-img">
-        <div class="hero-text">
-            <h1>D&N Motors</h1>
-            <p>Donde la pasión por los coches se convierte en confianza</p>
-        </div>
+    <section class="hero2">
+        <video autoplay loop muted class="hero2-video">
+    <source src="vids/mclaren.mp4" type="video/mp4">
+    </video>
+
+    <div class="hero2-content">
+        <h1>D&N Motors</h1>
+    <p>Donde la pasión por los coches se convierte en confianza</p>
+     </div>
     </section>
 
+<section class="categorias">
+
+    <h2 class="categorias-titulo">Elige Tu Camino</h2>
+
+    <div class="categorias-texto">
+        <p>En D&N Motors puedes elegir si prefieres coches de lujo, motos superdeportivas o apostar por los coches clásicos e históricos.</p>
+    </div>
+
+    <div class="categorias-grid">
+        <div class="cat-card">
+            <img src="./imgs/ferrari.png" alt="Coches superdeportivos">
+            <h3>Coches De Lujo</h3>
+            <button class="cat-btn">Descúbrelo</button>
+        </div>
+
+        <div class="cat-card">
+            <img src="./imgs/motoDeportiva.png" alt="Motos super deportivas">
+            <h3>Motos Superdeportivas</h3>
+            <button class="cat-btn">Descúbrelo</button>
+        </div>
+
+        <div class="cat-card">
+            <img src="./imgs/clasicos2.png" alt="Coches clásicos">
+            <h3>Coches Clásicos</h3>
+            <button class="cat-btn">Descúbrelo</button>
+        </div>
+    </div>
+
+</section>
+
+    
     <section class="intro">
         <div class="intro-text">
             <p>
@@ -37,13 +79,18 @@
             </p>
         </div>
         <div class="intro-img">
-            <img src="img/moto-coche.jpg" alt="Moto y coche deportivos">
+            <picture>
+                <source media="(max-width: 1500px)" srcset="./imgs/R.jpeg">
+                <img src="./imgs/moto1.jpg" alt="Mtocicleta deportiva" style="width: auto;">
+            </picture>
         </div>
     </section>
 
     <section class="second">
         <div class="second-img">
-            <img src="img/coche-familiar.jpg" alt="Coche familiar junto al mar">
+            <picture>
+                <img src="./imgs/aston.jpg" alt="Coche deportivo azul" style="width: 450px;">
+            </picture>
         </div>
         <div class="second-text">
             <p>
@@ -55,24 +102,35 @@
     <section class="about">
         <h2>Sobre nosotros</h2>
         <div class="about-content">
-            <span class="arrow">←</span>
-            <img src="img/mecanicos.jpg" alt="Mecánicos trabajando">
+            <picture>
+                <img src="./imgs/mecanico.jpg" alt="Mecánicos trabajando" style="width: 450px;">
+            </picture> 
             <div class="about-text">
                 <p>Ofrecemos el mejor cuidado para tu vehículo y para los tuyos de la mano de los mejores mecánicos.</p>
-            </div>
-            <span class="arrow">→</span>
+            </div>  
         </div>
-        <button class="btn">Comencemos</button>
+        <span class="arrow">←</span>
+        <span class="arrow">→</span><br>
+       <button class="btn" onclick="window.location.href='formulario.php'">Comencemos</button>
+
     </section>
 
     <footer class="footer">
         <div class="footer-left">
             <p><strong>D&N Motors</strong></p>
             <div class="social">
-                <span>📘</span>
-                <span>📷</span>
-                <span>▶️</span>
-                <span>💼</span>
+                <span>
+                    <img src="./imgs/Icon.png" alt="Logo" width="45" height="45">
+                </span>
+                <span>
+                    <img src="./imgs/Icon1.png" alt="Descripción" width="45" height="45">
+                </span>
+                <span>
+                    <img src="./imgs/Icon2.png" alt="Descripción" width="45" height="45">
+                </span>
+                <span>
+                    <img src="./imgs/Icon3.png" alt="Descripción" width="45" height="45">
+                </span>
             </div>
         </div>
 
