@@ -4,3 +4,4 @@ Nom: 32232332 | Email: fdgdf23@gmail.com | Edat: 56 | Telèfon: 601189087 | Cons
 Nom: Dani | Email: danielseguipons@gmail.com | Edat: 21 | Telèfon: 601189087 | Consentiment: Sí
 Nom: Danielet 04 | Email: danielseguipons@gmail.com | Edat: 21 | Telèfon: 601189087 | Consentiment: Sí
 Nom: Mauro | Email: hola@gmail.com | Edat: 25 | Telèfon: 654213567 | Consentiment: Sí
+Nom: Danielet 04 | Email: danielseguipons@gmail.com | Edat: 21 | Telèfon: 601189087 | Consentiment: Sí

@@ -15,13 +15,17 @@ RUN set -eux; \
         libzip-dev \
         zlib1g-dev \
         libicu-dev \
+        libfreetype6-dev \
+        libjpeg62-turbo-dev \
+        libpng-dev \
     ; \
     rm -rf /var/lib/apt/lists/*
 
-# Configurar 'zip' i compilar extensions
+# Configurar y compilar extensiones
 RUN set -eux; \
     docker-php-ext-configure zip; \
-    docker-php-ext-install -j"$(nproc)" intl zip mbstring opcache
+    docker-php-ext-configure gd --with-freetype --with-jpeg; \
+    docker-php-ext-install -j"$(nproc)" intl zip mbstring opcache gd
 
 # Instal·lar Xdebug (instal·lat però no activat si no poses un .ini)
 RUN pecl install xdebug

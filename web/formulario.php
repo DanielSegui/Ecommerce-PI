@@ -56,6 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
   <meta charset="UTF-8">
   <title>Formulari de contacte</title>
+  <link rel="icon" type="image/png" href="./imgs/logoPest.png">
   <link rel="stylesheet" href="css/estils.css">
 </head>
 <body>
