@@ -1,0 +1,13 @@
+{
+    "usuaris": [
+        {
+            "id": 1,
+            "nom_usuari": "Danielet",
+            "contrasenya": "$2y$10$5YN4nxzYzZ1ee6KTcxE51.WmCsPVDw2A2RIsPO.hfFZQkDEqGBb\/G",
+            "email": "danielseguipons@gmail.com",
+            "nom": "Daniel",
+            "cognoms": "Segui",
+            "data_registre": "2025-11-30T21:16:08+00:00"
+        }
+    ]
+}

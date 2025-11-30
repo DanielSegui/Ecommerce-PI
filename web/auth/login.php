@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
 <meta charset="UTF-8">
 <title>Login</title>
-<link rel="stylesheet" href="../css/pp.css">
+<link rel="stylesheet" href="../css/user_forms.css">
 </head>
 <body>
 <h1>Iniciar sesión</h1>

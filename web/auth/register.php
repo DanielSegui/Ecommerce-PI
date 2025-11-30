@@ -69,12 +69,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <title>Registro de usuario</title>
-    <link rel="stylesheet" href="../css/pp.css">
+    <link rel="stylesheet" href="../css/user_forms.css">
 </head>
 <body>
     <h1>Registro de usuario</h1>
-
-```
 <?php if ($message) echo "<p>$message</p>"; ?>
 
 <form action="" method="POST">
@@ -97,7 +95,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </form>
 
 <p>¿Ya tienes cuenta? <a href="login.php">Inicia sesión aquí</a></p>
-```
 
 </body>
 </html>

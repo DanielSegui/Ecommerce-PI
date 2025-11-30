@@ -1,0 +1,123 @@
+
+/* Reset básico para formularios */
+body {
+    background-color: #0D0F12;
+    color: goldenrod;
+}
+
+form {
+max-width: 450px;
+margin: 50px auto;
+padding: 30px 25px;
+background-color: #222;
+border-radius: 12px;
+box-shadow: 0 5px 25px rgba(0,0,0,0.5);
+color: #fff;
+font-family: 'Montserrat', sans-serif;
+}
+
+form h1 {
+text-align: center;
+font-size: 2rem;
+margin-bottom: 20px;
+color: goldenrod;
+}
+
+/* Inputs */
+form input[type="text"],
+form input[type="email"],
+form input[type="password"] {
+width: 100%;
+padding: 12px 2px;
+margin-bottom: 20px;
+border: 2px solid #333;
+border-radius: 8px;
+background-color: #1a1a1a;
+color: #fff;
+font-size: 1rem;
+transition: border 0.3s, background-color 0.3s;
+}
+
+form input[type="text"]:focus,
+form input[type="email"]:focus,
+form input[type="password"]:focus {
+border-color: goldenrod;
+background-color: #222;
+outline: none;
+}
+
+/* Labels */
+form label {
+display: block;
+margin-bottom: 6px;
+font-weight: 600;
+}
+
+/* Botón */
+form button {
+width: 100%;
+padding: 12px;
+font-size: 1.1rem;
+border: 2px solid goldenrod;
+border-radius: 8px;
+background-color: #1a1a1a;
+color: goldenrod;
+cursor: pointer;
+font-weight: 600;
+transition: 0.3s;
+}
+
+form button:hover {
+background-color: goldenrod;
+color: #1a1a1a;
+border-color: goldenrod;
+}
+
+/* Mensajes */
+form p {
+text-align: center;
+margin-top: 15px;
+font-size: 0.95rem;
+}
+
+form p a {
+color: goldenrod;
+text-decoration: none;
+}
+
+form p a:hover {
+text-decoration: underline;
+}
+
+/* Mensajes de éxito/error */
+.message {
+text-align: center;
+padding: 10px 15px;
+border-radius: 6px;
+margin-bottom: 20px;
+font-weight: 600;
+}
+
+.message.success {
+background-color: #1a441a;
+color: #b4f5b4;
+}
+
+.message.error {
+background-color: #441a1a;
+color: #f5b4b4;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+form {
+margin: 30px 15px;
+padding: 20px 15px;
+}
+
+form h1 {
+    font-size: 1.6rem;
+}
+
+
+}

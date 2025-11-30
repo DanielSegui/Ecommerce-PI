@@ -28,7 +28,7 @@ if (!$user) {
 <head>
 <meta charset="UTF-8">
 <title>Perfil</title>
-<link rel="stylesheet" href="../css/pp.css">
+<link rel="stylesheet" href="../css/user_forms.css">
 </head>
 <body>
 <h1>Perfil de usuario</h1>
