@@ -8,6 +8,15 @@
             "nom": "Daniel",
             "cognoms": "Segui",
             "data_registre": "2025-11-30T21:16:08+00:00"
+        },
+        {
+            "id": 2,
+            "nom_usuari": "HOLA",
+            "contrasenya": "$2y$10$QXqJCkNQAi49dVvmwUCY4O5ILmYTdIpBgb.TjngLI\/SKtiV\/NQ5Jy",
+            "email": "hola@gmail.com",
+            "nom": "Daniel",
+            "cognoms": "JJANJA",
+            "data_registre": "2025-11-30T22:09:18+00:00"
         }
     ]
 }
