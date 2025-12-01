@@ -72,29 +72,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="../css/user_forms.css">
 </head>
 <body>
-    <h1>Registro de usuario</h1>
 <?php if ($message) echo "<p>$message</p>"; ?>
 
 <form action="" method="POST">
-    <label>Nombre de usuario*</label><br>
-    <input type="text" name="nom_usuari" required><br><br>
+    <h1>Registro de usuario</h1>
+    <input type="text" name="nom_usuari" placeholder="Nombre Usuario" required><br><br>
 
-    <label>Email*</label><br>
-    <input type="email" name="email" required><br><br>
+    <input type="email" name="email" placeholder="Email" required><br><br>
 
-    <label>Contraseña*</label><br>
-    <input type="password" name="contrasenya" required><br><br>
+    <input type="password" name="contrasenya" placeholder="Contraseña" required><br><br>
 
-    <label>Nombre</label><br>
-    <input type="text" name="nom"><br><br>
+    <input type="text" name="nom" placeholder="Nombre"><br><br>
 
-    <label>Apellidos</label><br>
-    <input type="text" name="cognoms"><br><br>
+    <input type="text" name="cognoms" placeholder="Apellidos"><br><br>
 
     <button type="submit">Registrarse</button>
 </form>
-
-<p>¿Ya tienes cuenta? <a href="login.php">Inicia sesión aquí</a></p>
-
+<button class="link-btn" onclick="window.location.href='login.php'">
+    ¿Ya tienes cuenta? Inicia sesión aquí
+</button>
+<div style="margin-top: 15px;">
+    <button type="button" onclick="window.location.href='../index.html'">
+        Volver al inicio
+    </button>
+</div>
 </body>
 </html>

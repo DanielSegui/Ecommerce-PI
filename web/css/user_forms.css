@@ -89,6 +89,29 @@ form p a:hover {
 text-decoration: underline;
 }
 
+.link-btn {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+
+    background-color: transparent;
+    border: 2px solid goldenrod;
+    border-radius: 6px;
+
+    color: goldenrod;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.link-btn:hover {
+    background-color: goldenrod;
+    color: #0D0F12;
+}
+
+
 /* Mensajes de éxito/error */
 .message {
 text-align: center;
