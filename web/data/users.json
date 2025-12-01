@@ -17,6 +17,33 @@
             "nom": "Daniel",
             "cognoms": "JJANJA",
             "data_registre": "2025-11-30T22:09:18+00:00"
+        },
+        {
+            "id": 3,
+            "nom_usuari": "NehuenP",
+            "contrasenya": "$2y$10$SGKK2PUwKXGGlL3sR9CZNuPj3q5RdhZQjU.ChTaxWrJHM4NhekPAC",
+            "email": "nehuen@gmail.com",
+            "nom": "Nehuen",
+            "cognoms": "Polizzil",
+            "data_registre": "2025-12-01T14:51:16+00:00"
+        },
+        {
+            "id": 4,
+            "nom_usuari": "1",
+            "contrasenya": "$2y$10$7Noeeay61Xe8PQ74wGN2u.x6xI9JjREzzEKohULzxPMWT2qrF53AO",
+            "email": "1@gmail",
+            "nom": "2",
+            "cognoms": "1",
+            "data_registre": "2025-12-01T18:26:19+00:00"
+        },
+        {
+            "id": 5,
+            "nom_usuari": "Danielet 04",
+            "contrasenya": "$2y$10$fJsVU2KpCX0Tz5JHV06Wue73d0fGZivkIcEFa\/aYheBaIgKXeZKiK",
+            "email": "danielseguipons@gmail.com",
+            "nom": "Danielet",
+            "cognoms": "04",
+            "data_registre": "2025-12-01T18:42:11+00:00"
         }
     ]
 }

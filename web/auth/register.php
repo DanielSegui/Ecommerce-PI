@@ -4,13 +4,6 @@ session_start();
 // Incluimos las funciones para leer/escribir usuarios
 require_once __DIR__ . '/../includes/json_connect.php';
 
-
-// Verificar que la carpeta data exista
-$dataDir = __DIR__ . '/../../data';
-if (!is_dir($dataDir)) {
-    mkdir($dataDir, 0777, true);
-}
-
 // Verificar que users.json exista
 if (!file_exists(USERS_FILE)) {
     file_put_contents(USERS_FILE, json_encode(['usuaris' => []], JSON_PRETTY_PRINT));
@@ -27,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Validaciones básicas
     if (!$nomUsuari || !$email || !$contrasenya) {
-        $message = '❌ Por favor rellena todos los campos obligatorios.';
+        $message = 'Por favor rellena todos los campos obligatorios.';
     } else {
         $users = read_users();
 
@@ -41,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         if ($exists) {
-            $message = '❌ Este nombre de usuario ya existe.';
+            $message = 'Este nombre de usuario ya existe.';
         } else {
             // Crear nuevo usuario
             $newUser = [
@@ -69,32 +62,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <title>Registro de usuario</title>
-    <link rel="stylesheet" href="../css/user_forms.css">
+    <link rel="stylesheet" href="../css/user_form.css">
 </head>
 <body>
-<?php if ($message) echo "<p>$message</p>"; ?>
-
 <form action="" method="POST">
     <h1>Registro de usuario</h1>
-    <input type="text" name="nom_usuari" placeholder="Nombre Usuario" required><br><br>
+    <input type="text" name="nom_usuari" placeholder=" Nombre Usuario"><br><br>
 
-    <input type="email" name="email" placeholder="Email" required><br><br>
+    <input type="email" name="email" placeholder=" Email"><br><br>
 
-    <input type="password" name="contrasenya" placeholder="Contraseña" required><br><br>
+    <input type="password" name="contrasenya" placeholder=" Contraseña" required><br><br>
 
-    <input type="text" name="nom" placeholder="Nombre"><br><br>
+    <input type="text" name="nom" placeholder=" Nombre"><br><br>
 
-    <input type="text" name="cognoms" placeholder="Apellidos"><br><br>
+    <input type="text" name="cognoms" placeholder=" Apellidos"><br><br>
 
     <button type="submit">Registrarse</button>
-</form>
-<button class="link-btn" onclick="window.location.href='login.php'">
+    <button class="button" onclick="window.location.href='login.php'">
     ¿Ya tienes cuenta? Inicia sesión aquí
-</button>
-<div style="margin-top: 15px;">
+    </button>
     <button type="button" onclick="window.location.href='../index.html'">
         Volver al inicio
     </button>
-</div>
+    <?php if ($message) echo "<p>$message</p>"; ?>
+</form>
 </body>
 </html>

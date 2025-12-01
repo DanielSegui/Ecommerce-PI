@@ -28,20 +28,22 @@ if (!$user) {
 <head>
 <meta charset="UTF-8">
 <title>Perfil</title>
-<link rel="stylesheet" href="../css/user_forms.css">
+<link rel="stylesheet" href="../css/perfil.css">
 </head>
 <body>
-<h1>Perfil de usuario</h1>
-<p>Nombre de usuario: <?php echo htmlspecialchars($user['nom_usuari']); ?></p>
-<p>Nombre: <?php echo htmlspecialchars($user['nom']); ?></p>
-<p>Apellidos: <?php echo htmlspecialchars($user['cognoms']); ?></p>
-<p>Email: <?php echo htmlspecialchars($user['email']); ?></p>
-<p>Fecha de registro: <?php echo htmlspecialchars($user['data_registre']); ?></p>
-<a href="logout.php">Cerrar sesión</a>
-<div style="margin-top: 15px;">
-    <button type="button" onclick="window.location.href='../index.html'">
-        Volver al inicio
-    </button>
-</div>
+    <div class="profile-box">
+        <h1>Perfil de usuario</h1>
+        <p>Nombre de usuario: <?php echo htmlspecialchars($user['nom_usuari']); ?></p>
+        <p>Nombre: <?php echo htmlspecialchars($user['nom']); ?></p>
+        <p>Apellidos: <?php echo htmlspecialchars($user['cognoms']); ?></p>
+        <p>Email: <?php echo htmlspecialchars($user['email']); ?></p>
+        <p>Fecha de registro: <?php echo htmlspecialchars($user['data_registre']); ?></p>
+        <a href="logout.php">Cerrar sesión</a>
+        <div style="margin-top: 15px;">
+            <button type="button" onclick="window.location.href='../index.html'">
+                Volver al inicio
+            </button>
+        </div>
+    </div>
 </body>
 </html>

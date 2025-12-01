@@ -30,24 +30,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
 <meta charset="UTF-8">
 <title>Login</title>
-<link rel="stylesheet" href="../css/user_forms.css">
+<link rel="stylesheet" href="../css/user_form.css">
 </head>
 <body>
-<?php if($message) echo "<p style='color:red;'>$message</p>"; ?>
-<?php if(isset($_GET['success'])) echo "<p style='color:green;'>Registro exitoso, inicia sesión.</p>"; ?>
 <form method="POST">
     <h1>Iniciar sesión</h1>
-    <input type="text" name="nom_usuari" placeholder="Nombre de usuario" required><br>
+    <input type="text" name="nom_usuari" placeholder="Nombre de usuario"><br>
     <input type="password" name="contrasenya" placeholder="Contraseña" required><br>
+    <?php if($message) echo "<p style='color:red;'>$message</p>"; ?>
+    <?php if(isset($_GET['success'])) echo "<p style='color:green;'>Registro exitoso, inicia sesión.</p>"; ?>
     <button type="submit">Iniciar sesión</button>
-</form>
-<button class="link-btn" onclick="window.location.href='register.php'">
+    <button class="button" onclick="window.location.href='register.php'">
     ¿No tienes cuenta? Regístrate
-</button>
-<div style="margin-top: 15px;">
+    </button>
     <button type="button" onclick="window.location.href='../index.html'">
         Volver al inicio
     </button>
-</div>
+</form>
 </body>
 </html>
