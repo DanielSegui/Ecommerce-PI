@@ -62,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <title>Registro de usuario</title>
-    <link rel="stylesheet" href="../css/user_form.css">
+    <link rel="stylesheet" href="../css/user_formularis.css">
 </head>
 <body>
 <form action="" method="POST">
@@ -71,9 +71,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <input type="email" name="email" placeholder=" Email"><br><br>
 
-    <input type="password" name="contrasenya" placeholder=" Contraseña" required><br><br>
+    <input type="password" name="contrasenya" placeholder=" Contraseña"><br><br>
 
-    <input type="text" name="nom" placeholder=" Nombre"><br><br>
+    <input type="text" name="nom" placeholder=" Nombre" required><br><br>
 
     <input type="text" name="cognoms" placeholder=" Apellidos"><br><br>
 
@@ -84,7 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <button type="button" onclick="window.location.href='../index.html'">
         Volver al inicio
     </button>
-    <?php if ($message) echo "<p>$message</p>"; ?>
+    <?php if ($message) echo "<p style='color:red;'>$message</p>"; ?>
 </form>
 </body>
 </html>

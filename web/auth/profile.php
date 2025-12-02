@@ -39,6 +39,11 @@ if (!$user) {
         <p>Email: <?php echo htmlspecialchars($user['email']); ?></p>
         <p>Fecha de registro: <?php echo htmlspecialchars($user['data_registre']); ?></p>
         <a href="logout.php">Cerrar sesión</a>
+        <div style="margin-top: 10px;">
+        <button type="button" onclick="window.location.href='editar_perfil.php'">
+            Editar perfil
+        </button>
+        </div>
         <div style="margin-top: 15px;">
             <button type="button" onclick="window.location.href='../index.html'">
                 Volver al inicio
