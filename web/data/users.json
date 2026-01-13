@@ -35,6 +35,15 @@
             "nom": "Danielet",
             "cognoms": "wEW",
             "data_registre": "2025-12-02T00:37:07+00:00"
+        },
+        {
+            "id": 5,
+            "nom_usuari": "Dani",
+            "contrasenya": "$2y$10$CcniR1kn1rl9yR0siqDCuuS2rFs2vzEA.TAhKawWznQAC87\/qgL\/m",
+            "email": "danielseguipons@gmail.com",
+            "nom": "Daniel",
+            "cognoms": "Segui",
+            "data_registre": "2025-12-02T14:47:14+00:00"
         }
     ]
 }

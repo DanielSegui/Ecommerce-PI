@@ -62,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <title>Registro de usuario</title>
-    <link rel="stylesheet" href="../css/user_formularis.css">
+    <link rel="stylesheet" href="../css/user_formulari.css">
 </head>
 <body>
 <form action="" method="POST">

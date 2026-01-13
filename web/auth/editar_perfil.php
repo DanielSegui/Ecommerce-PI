@@ -46,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <head>
 <meta charset="UTF-8">
 <title>Editar perfil</title>
-<link rel="stylesheet" href="../css/user_form.css">
+<link rel="stylesheet" href="../css/user_formulari.css">
 </head>
 <body>
 
