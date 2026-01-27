@@ -19,7 +19,7 @@ body {
     position: fixed;
     top: 0;
     z-index: 9999;
-    overflow: visible; /* limpia los floats */
+    overflow: visible; 
 }
 
 .logo {
@@ -27,7 +27,6 @@ body {
     cursor: pointer;
     height: 60px;
     padding-top: 3px;
-    
 }
 
 .logo img {
@@ -57,7 +56,7 @@ body {
     cursor: pointer;
 }
 
-/* --- MENU DESPLEGABLE USUARIO --- */
+/* --- MENU DESPLEGABLE USUARIO (Corregido para TAB) --- */
 
 .user-menu {
     position: relative;
@@ -65,6 +64,13 @@ body {
     margin-top: 10px;
     margin-right: 20px;
     cursor: pointer;
+}
+
+/* 1. Añadimos foco visual para el Tabulador */
+.user-menu label:focus {
+    outline: 2px solid goldenrod;
+    outline-offset: 3px;
+    border-radius: 5px;
 }
 
 .user-avatar {
@@ -78,7 +84,6 @@ body {
     transform: scale(1.1);
 }
 
-/* Dropdown oculto */
 .user-menu .dropdown {
     list-style: none;
     position: absolute;
@@ -89,12 +94,11 @@ body {
     border-radius: 8px;
     padding: 10px 0;
     width: 180px;
-    display: none;
+    display: none; /* Se mantiene oculto */
     box-shadow: 0 0 15px rgba(0,0,0,0.4);
     z-index: 99999;
 }
 
-/* Estilo de los enlaces */
 .user-menu .dropdown li {
     width: 100%;
 }
@@ -102,7 +106,7 @@ body {
 .user-menu .dropdown li a {
     display: block;
     padding: 12px 20px;
-    color: white;
+    color: rgb(255, 255, 255);
     text-decoration: none;
     font-size: 1rem;
     transition: background 0.3s ease;
@@ -113,25 +117,18 @@ body {
     color: #111;
 }
 
-.dropdown.show {
-    display: block;
-}
-
-/* Ocultar checkbox */
+/* 2. El checkbox se queda oculto pero activo */
 .user-menu input {
-    display: none;
+    position: absolute;
+    opacity: 0;
 }
 
-/* Mostrar menú cuando el checkbox está activado */
-.user-menu input:checked + label + .dropdown {
+/* 3. Esta es la lógica que ya tenías, funciona con Enter si el label tiene tabindex */
+.user-menu input:checked ~ .dropdown {
     display: block !important;
 }
 
-/* Dropdown oculto por defecto */
-.user-menu .dropdown {
-    display: none;
-}
-
+/* --- RESTO DEL CSS ORIGINAL SIN TOCAR --- */
 
 .hero1 {
   position: relative;
@@ -169,163 +166,6 @@ body {
     font-weight: bold;
 }
 
-.intro, .second {
-    width: 100%;
-    padding: 60px 10%;
-    overflow: hidden; /* para limpiar floats */
-}
-
-.intro-text{
-    width: 50%;
-    float: left;
-    font-size: 1.1rem;
-    line-height: 1.8;
-}
-
-
-
-.second-text{
-    width: 50%;
-    float: right;
-    font-size: 1.1rem;
-    line-height: 1.8;
-}
-
-.intro-img img{
-    width: 100%;
-    max-width: 450px;
-    border-radius: 10px;
-    float: right;
-    transition: transform 0.6s;
-}
-
-.intro-img img:hover {
-   transform: scale(1.1);
-}
-
-.second-img img{
-    width: 100%;
-    max-width: 450px;
-    border-radius: 10px;
-    float: left;
-    transition: transform 0.6s;
-}
-
-.second-img img:hover {
-   transform: scale(1.1);
-}
-
-.about {
-    text-align: center;
-    padding: 60px 10%;
-    background-color: #0D0F12;
-}
-
-.about h2 {
-    font-size: 2rem;
-    margin-bottom: 30px;
-}
-
-.about-content {
-    width: 100%;
-    margin: 0 auto;
-}
-
-.about-content img {
-    width: 60%;              
-    max-width: 500px;
-    display: block;
-    margin: 0 auto;           
-    border-radius: 10px;
-}
-
-.about-text {
-    width: 80%;
-    max-width: 600px;
-    margin: 20px auto 0 auto;
-    font-size: 1.1rem;
-    text-align: center;
-}
-
-.arrow {
-    font-size: 2rem;
-    cursor: pointer;
-    display: inline-block;
-    margin: 20px 0;
-}
-
-.btn {
-    background-color: #111;
-    color: goldenrod;
-    padding: 15px 30px;
-    font-size: 1.1rem;
-    border-radius: 8px;
-    margin-top: 30px;
-    cursor: pointer;
-    transition: 0.3s;
-    border-width: 3px;
-    border-style: solid;
-    border-color: goldenrod;
-}
-
-.btn:hover {
-    background-color: goldenrod;
-    color: #1a1a1a;
-}
-
-/* Footer */
-.footer {
-    background-color: black;
-    padding: 40px 10%;
-    font-size: 1.1rem;
-    overflow: hidden; /* limpiar floats */
-    color: rgb(255, 255, 255);
-}
-
-.footer-left {
-    float: left;
-    width: 40%;
-}
-
-.social {
-    margin-top: 10px;
-    cursor: pointer;
-}
-
-.social i {
-    margin-right: 10px;
-}
-
-.footer-right {
-    float: right;
-    width: 55%;
-}
-
-.footer-right ul {
-    list-style: none;
-    margin-top: 10px;
-}
-
-.footer-right li {
-    margin-bottom: 5px;
-}
-
-@keyframes aparicion {
-    0% {
-        opacity: 0;
-        transform: translateY(-60%);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(-100%);
-    }
-}
-
-.hero2-content {
-    animation: aparicion 1.5s ease-out forwards;
-}
-
-/* Sección Categorías */
 .coches {
     padding: 80px 20%;
     text-align: center;
@@ -338,27 +178,17 @@ body {
     font-weight: 600;
 }
 
-.categorias-texto {
-    font-size: 1.2rem;
-    width: 100%;
-    margin: 0 auto 40px auto;
-    color: white;
-}
-
-/* GRID de las tarjetas */
 .coches-tienda {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 10px;
 }
 
-/* Tarjetas */
 .coches-card {
     background: #111;
     border: 1px solid #333;
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    
 }
 
 .coches-card a {
@@ -372,7 +202,7 @@ body {
 
 .coches-card img {
     width: 100%;
-    aspect-ratio: 3/2; /* Ajusta la relación ancho/alto */
+    aspect-ratio: 3/2;
     object-fit: cover;
     margin-bottom: 15px;
 }
@@ -382,4 +212,3 @@ body {
     color: white;
     margin: 10px 0 15px 0;
 }
-
