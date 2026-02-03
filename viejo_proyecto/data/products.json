@@ -1,0 +1,22 @@
+{
+    "productes": [
+        {
+            "id": 1,
+            "sku": "A001",
+            "nom": "Ferrari 458 Italia",
+            "descripcio": "Modelo m\u00e1s famoso de ferrari",
+            "img": "imgs\/ferrari.png",
+            "preu": 250000,
+            "estoc": 5
+        },
+        {
+            "id": 2,
+            "sku": "A002",
+            "nom": "Yamaha NMAX",
+            "descripcio": "Modelo moderno de yamaha",
+            "img": "imgs\/motodeportiva.png",
+            "preu": 30000,
+            "estoc": 4
+        }
+    ]
+}

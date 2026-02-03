@@ -1,0 +1,663 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background-color: #0D0F12;
+    color: #ffffff;
+}
+
+/* Header */
+.header {
+    width: 100%;
+    height: 13vh;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    z-index: 9999;
+    overflow: visible; /* limpia los floats */
+}
+
+.logo {
+    float: left;
+    cursor: pointer;
+    height: 60px;
+    padding-top: 3px;
+    
+}
+
+.logo img {
+    height: 100px;
+    padding-bottom: 40px;
+}
+
+.menu-icon {
+    float: right;
+    font-size: 28px;
+    cursor: pointer;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.icons {
+    float: right;
+    font-size: 24px;
+    padding-right: 10px;
+    cursor: default;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.icons img {
+    margin-left: 25px;
+    cursor: pointer;
+}
+
+/* --- MENU DESPLEGABLE USUARIO --- */
+
+.user-menu {
+    position: relative;
+    float: right;
+    margin-top: 10px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.user-avatar {
+    width: 45px;
+    height: 40px;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.user-avatar:hover {
+    transform: scale(1.1);
+}
+
+/* Dropdown oculto */
+.user-menu .dropdown {
+    list-style: none;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 10px 0;
+    width: 180px;
+    display: none;
+    box-shadow: 0 0 15px rgba(0,0,0,0.4);
+    z-index: 99999;
+}
+
+/* Estilo de los enlaces */
+.user-menu .dropdown li {
+    width: 100%;
+}
+
+.user-menu .dropdown li a {
+    display: block;
+    padding: 12px 20px;
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background 0.3s ease;
+}
+
+.user-menu .dropdown li a:hover {
+    background-color: goldenrod;
+    color: #111;
+}
+
+.dropdown.show {
+    display: block;
+}
+
+/* Ocultar checkbox */
+.user-menu input {
+    display: none;
+}
+
+/* Mostrar menú cuando el checkbox está activado */
+.user-menu input:checked + label + .dropdown {
+    display: block !important;
+}
+
+/* Dropdown oculto por defecto */
+.user-menu .dropdown {
+    display: none;
+}
+
+
+.hero2 {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.hero2-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  z-index: -5;
+  opacity: 0.7;
+}
+
+.hero2-content {
+  position: relative;
+  z-index: 1;
+  color: white;
+  text-align: center;
+  top: 50%;
+  transform: translateY(-100%);
+}
+
+.hero2-content h1 {
+    font-size: 5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.hero2-content p {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.intro, .second {
+    width: 100%;
+    padding: 60px 10%;
+    overflow: hidden; /* para limpiar floats */
+}
+
+.intro-text{
+    width: 50%;
+    float: left;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+
+
+.second-text{
+    width: 50%;
+    float: right;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.intro-img img{
+    width: 100%;
+    max-width: 450px;
+    border-radius: 10px;
+    float: right;
+    transition: transform 0.6s;
+}
+
+.intro-img img:hover {
+   transform: scale(1.1);
+}
+
+.second-img img{
+    width: 100%;
+    max-width: 450px;
+    border-radius: 10px;
+    float: left;
+    transition: transform 0.6s;
+}
+
+.second-img img:hover {
+   transform: scale(1.1);
+}
+
+.about {
+    text-align: center;
+    padding: 60px 10%;
+    background-color: #0D0F12;
+}
+
+.about h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: goldenrod;
+}
+
+.about-content {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.about-content img {
+    width: 60%;              
+    max-width: 500px;
+    display: block;
+    margin: 0 auto;           
+    border-radius: 10px;
+}
+
+.about-text {
+    width: 80%;
+    max-width: 600px;
+    margin: 20px auto 0 auto;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.arrow {
+    font-size: 2rem;
+    cursor: pointer;
+    display: inline-block;
+    margin: 20px 0;
+}
+
+.btn {
+    background-color: #111;
+    color: goldenrod;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    margin-top: 30px;
+    cursor: pointer;
+    transition: 0.3s;
+    border-width: 3px;
+    border-style: solid;
+    border-color: goldenrod;
+}
+
+.btn:hover {
+    background-color: goldenrod;
+    color: #1a1a1a;
+}
+
+/* Footer */
+.footer {
+    background-color: black;
+    padding: 40px 10%;
+    font-size: 1.1rem;
+    overflow: hidden; /* limpiar floats */
+    color: rgb(255, 255, 255);
+}
+
+.footer-left {
+    float: left;
+    width: 40%;
+}
+
+.social {
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.social i {
+    margin-right: 10px;
+}
+
+.footer-right {
+    float: right;
+    width: 55%;
+}
+
+.footer-right ul {
+    list-style: none;
+    margin-top: 10px;
+}
+
+.footer-right li {
+    margin-bottom: 5px;
+}
+
+@keyframes aparicion {
+    0% {
+        opacity: 0;
+        transform: translateY(-60%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(-100%);
+    }
+}
+
+.hero2-content {
+    animation: aparicion 1.5s ease-out forwards;
+}
+
+/* Sección Categorías */
+.categorias {
+    padding: 80px 10%;
+    text-align: center;
+    background-color: #0D0F12;
+}
+
+.categorias-titulo {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: goldenrod;
+    font-weight: 600;
+}
+
+.categorias-texto {
+    font-size: 1.2rem;
+    width: 80%;
+    margin: 0 auto 40px auto;
+    color: white;
+}
+
+/* GRID de las tarjetas */
+.categorias-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+}
+
+/* Tarjetas */
+.cat-card {
+    background: #111;
+    padding: 25px;
+    border: 1px solid #333;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cat-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 0 20px rgba(218,165,32,0.4);
+}
+
+.cat-card img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.cat-card h3 {
+    font-size: 1.3rem; /* Bajamos un pelín el tamaño base */
+    overflow-wrap: break-word; /* Si la palabra es muy larga, la rompe */
+    hyphens: auto; /* Añade guiones si es necesario */
+    min-height: 3.2rem; /* Reserva espacio para 2 líneas y que los botones queden alineados */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Botón */
+.cat-btn {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #1a1a1a;
+    color: goldenrod;
+    border: 3px solid goldenrod;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.cat-btn:hover {
+    background-color: goldenrod;
+    color: #1a1a1a;
+}
+
+/* ABOUT – Carrusel */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 550px; /* similar a tus imágenes actuales */
+    margin: 0 auto 40px auto;
+    overflow: hidden;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-item {
+    min-width: 100%;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.carousel-item img {
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    max-height: 300px;   /* <-- ESTA ES LA CLAVE */
+    object-fit: cover;   /* mantiene proporciones sin deformarse */
+    border-radius: 10px;
+    display: block;
+    margin: 0 auto;
+}
+
+
+.carousel-item p {
+    background: rgba(0,0,0,0.0);
+    backdrop-filter: blur(3px);
+    padding: 12px 15px;
+    border-radius: 8px;
+    margin-top: 10px;
+    display: inline-block;
+    color: white;
+}
+
+/* Botones del carrusel */
+.carousel-btn {
+    background: none;
+    border: none;
+    color: goldenrod;
+    font-size: 2.5rem;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.carousel-btn:hover {
+    color: white;
+}
+
+
+
+.carousel-btn.prev {
+    left: -10px; /* sobresale ligeramente hacia fuera, estilo moderno */
+}
+
+.carousel-btn.next {
+    right: -10px;
+}
+
+/* --- SPLIT LAYOUT PREMIUM --- */
+
+.split {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 80px 10%;
+    gap: 60px;
+}
+
+.split.reverse {
+    flex-direction: row-reverse;
+}
+
+.split-img {
+    flex: 1;
+}
+
+.split-img img {
+    width: 100%;
+    max-width: 550px;
+    border-radius: 15px;
+    object-fit: cover;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    transition: transform .4s ease;
+}
+
+.split-img img:hover {
+    transform: scale(1.03);
+}
+
+.split-text {
+    flex: 1;
+    color: white;
+    padding: 20px;
+}
+
+.split-text h2 {
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+    color: goldenrod;
+    font-weight: 700;
+}
+
+.split-text p {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: #ddd;
+}
+
+.categorias .row {
+    display: flex;
+    align-items: stretch; /* Esto hace que todas las columnas midan lo mismo */
+}
+
+.categorias .cat-card {
+    height: 100%; /* La tarjeta ocupa todo el alto de la columna */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* El botón siempre quedará abajo */
+}
+
+.categorias .cat-card img {
+    height: 200px; /* Altura fija para las 3 imágenes de categorías */
+    object-fit: contain; /* Ajusta la imagen sin deformarla */
+    margin-bottom: 20px;
+}
+
+.carousel-track .carousel-item {
+    display: block !important;
+    opacity: 1 !important;
+}
+
+/* PROTECCIÓN DEL CARRUSEL ORIGINAL */
+.carousel-item {
+    display: block !important;
+    margin-right: 0 !important;
+    flex: 0 0 100%;
+}
+.carousel-track {
+    display: flex !important;
+}
+.carousel-container {
+    max-width: 550px;
+    margin: 0 auto 40px auto;
+    overflow: hidden;
+}
+
+.cat-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.cat-card h3 {
+    min-height: 3.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+}
+
+.cat-card.shadow-sm:hover {
+    box-shadow: 0 .5rem 1rem rgba(218, 165, 32, 0.25) !important;
+    transition: box-shadow 0.3s ease;
+}
+
+@media (max-width: 992px) {
+    .split, .split.reverse {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+        padding: 40px 5%;
+    }
+
+    .split-text h2 {
+        font-size: 1.8rem;
+    }
+
+    .hero2-content h1 {
+        font-size: 3.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        height: auto;
+        padding: 5px 15px;
+    }
+
+    .logo img {
+        height: 70px;
+        padding-bottom: 20px;
+    }
+
+    .hero2-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero2-content p {
+        font-size: 1.1rem;
+    }
+
+
+    .categorias {
+        padding: 40px 5%;
+    }
+
+    .categorias-titulo {
+        font-size: 1.8rem;
+    }
+
+    .categorias-texto {
+        width: 100%;
+        font-size: 1rem;
+    }
+
+    .footer-left, .footer-right {
+        float: none;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .footer-right ul {
+        padding: 0;
+    }
+    
+
+    .carousel-container {
+        max-width: 90% !important;
+    }
+    
+    .carousel-btn {
+        font-size: 1.8rem;
+    }
+}
+
+/* Pantallas muy pequeñas */
+@media (max-width: 480px) {
+    .hero2-content h1 {
+        font-size: 2rem;
+    }
+    
+    .cat-card img {
+        height: 150px;
+    }
+}

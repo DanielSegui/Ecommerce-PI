@@ -1,0 +1,49 @@
+{
+    "usuaris": [
+        {
+            "id": 1,
+            "nom_usuari": "Danielet",
+            "contrasenya": "$2y$10$5YN4nxzYzZ1ee6KTcxE51.WmCsPVDw2A2RIsPO.hfFZQkDEqGBb\/G",
+            "email": "danielseguipons@gmail.com",
+            "nom": "Daniel",
+            "cognoms": "Segui Pons",
+            "data_registre": "2025-11-30T21:16:08+00:00"
+        },
+        {
+            "id": 2,
+            "nom_usuari": "HOLA",
+            "contrasenya": "$2y$10$QXqJCkNQAi49dVvmwUCY4O5ILmYTdIpBgb.TjngLI\/SKtiV\/NQ5Jy",
+            "email": "hola@gmail.com",
+            "nom": "Daniel",
+            "cognoms": "JJANJA",
+            "data_registre": "2025-11-30T22:09:18+00:00"
+        },
+        {
+            "id": 3,
+            "nom_usuari": "NehuenP",
+            "contrasenya": "$2y$10$SGKK2PUwKXGGlL3sR9CZNuPj3q5RdhZQjU.ChTaxWrJHM4NhekPAC",
+            "email": "nehuen@gmail.com",
+            "nom": "Nehuen",
+            "cognoms": "Polizzil",
+            "data_registre": "2025-12-01T14:51:16+00:00"
+        },
+        {
+            "id": 4,
+            "nom_usuari": "Danielet 04",
+            "contrasenya": "$2y$10$n57MUnAeMn.NJ94SKbitCeM7A\/HigzVQtsdM.Ij5mNBKwmXPZeCAa",
+            "email": "danielseguipons@gmail.com",
+            "nom": "Danielet",
+            "cognoms": "wEW",
+            "data_registre": "2025-12-02T00:37:07+00:00"
+        },
+        {
+            "id": 5,
+            "nom_usuari": "Dani",
+            "contrasenya": "$2y$10$CcniR1kn1rl9yR0siqDCuuS2rFs2vzEA.TAhKawWznQAC87\/qgL\/m",
+            "email": "danielseguipons@gmail.com",
+            "nom": "Daniel",
+            "cognoms": "Segui",
+            "data_registre": "2025-12-02T14:47:14+00:00"
+        }
+    ]
+}
