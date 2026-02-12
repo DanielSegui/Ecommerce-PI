@@ -1,0 +1,161 @@
+/* --- DETALLE DE PRODUCTO --- */
+.detalle-container {
+    padding-top: 15vh; /* Para que no lo tape el header */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 50px;
+}
+
+.info-principal {
+    display: flex;
+    gap: 50px;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.galeria-vip {
+    flex: 1;
+    min-width: 350px;
+}
+
+.galeria-vip img {
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+    border: 1px solid #333;
+}
+
+.detalles-compra {
+    flex: 1;
+    min-width: 350px;
+}
+
+.badge-lujo {
+    background: #28a745;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
+.detalles-compra h1 {
+    font-size: 3rem;
+    margin: 15px 0;
+    color: goldenrod;
+}
+
+.precio {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+.specs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 30px;
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+    padding: 20px 0;
+}
+
+.spec-item {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.spec-item strong {
+    color: goldenrod;
+    font-size: 0.9rem;
+}
+
+.btn-reserva {
+    width: 100%;
+    background: goldenrod;
+    color: #111;
+    border: none;
+    padding: 20px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: 0.3s;
+    margin-top: 20px;
+}
+
+.btn-reserva:hover {
+    background: #fff;
+    transform: scale(1.02);
+}
+
+/* --- CHECKOUT / RESERVA --- */
+.checkout-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: radial-gradient(circle, #1a1c20 0%, #0d0f12 100%);
+}
+
+.checkout-card {
+    background: #111;
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid goldenrod;
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+}
+
+.reserva-form {
+    text-align: left;
+    margin-top: 30px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    color: goldenrod;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    color: white;
+    border-radius: 5px;
+}
+
+.row-inputs {
+    display: flex;
+    gap: 20px;
+}
+
+.btn-pagar {
+    width: 100%;
+    background: goldenrod;
+    border: none;
+    padding: 15px;
+    color: #111;
+    font-weight: 700;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.volver {
+    display: block;
+    margin-top: 20px;
+    color: #666;
+    text-decoration: none;
+    font-size: 0.9rem;
+}

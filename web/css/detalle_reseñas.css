@@ -1,0 +1,152 @@
+/* --- LAYOUT Y CONTENEDORES --- */
+.detalle-container {
+    padding-top: 15vh;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.info-principal {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    margin-bottom: 60px;
+    align-items: flex-start;
+}
+
+.galeria-vip { flex: 1; min-width: 350px; }
+.galeria-vip img {
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid #333;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+}
+
+.detalles-compra { flex: 1; min-width: 350px; }
+
+/* --- TEXTOS --- */
+.gold-title { color: goldenrod; margin-bottom: 25px; font-size: 2rem; font-weight: 600; }
+.badge-lujo { background: #28a745; color: #fff; padding: 5px 15px; border-radius: 4px; font-size: 0.8rem; text-transform: uppercase; font-weight: bold; }
+.precio { font-size: 2.8rem; font-weight: 700; margin: 20px 0; color: #fff; }
+.descripcion-texto { line-height: 1.7; color: #bbb; margin-bottom: 30px; font-size: 1.05rem; }
+
+/* --- BOTONES PRINCIPALES (DORADO/NEGRO) --- */
+.btn-reserva {
+    display: block;
+    width: 100%;
+    background-color: #000 !important;
+    color: goldenrod !important;
+    border: 3px solid goldenrod !important;
+    padding: 18px 0 !important;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700 !important;
+    font-size: 1.1rem !important;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.btn-reserva:hover {
+    background-color: goldenrod !important;
+    color: #000 !important;
+    box-shadow: 0 0 25px rgba(218, 165, 32, 0.5);
+}
+
+.btn-small { width: auto !important; padding: 12px 35px !important; font-size: 0.9rem !important; }
+
+/* --- BOTÓN FAVORITOS --- */
+.acciones-compra { display: flex; flex-direction: column; gap: 15px; margin-top: 25px; }
+
+.btn-favorito {
+    background: transparent !important;
+    color: #fff !important;
+    border: 1px solid #333 !important;
+    padding: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.btn-favorito .corazon { font-size: 1.3rem; color: #444; transition: color 0.3s; }
+
+.btn-favorito.active { border-color: #ff4444 !important; }
+.btn-favorito.active .corazon { color: #ff4444; }
+
+.btn-favorito:hover { border-color: goldenrod !important; background: rgba(218, 165, 32, 0.05) !important; }
+
+/* --- BOTÓN BORRAR --- */
+.btn-delete {
+    background: transparent !important;
+    color: #ff4444 !important;
+    border: 1px solid #ff4444 !important;
+    padding: 6px 15px !important;
+    font-size: 0.75rem !important;
+    font-weight: 600 !important;
+    text-transform: uppercase;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-delete:hover {
+    background: #ff4444 !important;
+    color: #fff !important;
+    box-shadow: 0 0 15px rgba(255, 68, 68, 0.4);
+}
+
+/* --- RESEÑAS Y CARDS --- */
+.reviews-section { background: #111; padding: 40px; border-radius: 15px; border: 1px solid #222; margin-top: 50px; }
+.rating-input { display: flex; flex-direction: row-reverse; justify-content: flex-end; margin-bottom: 20px; }
+.star { font-size: 2.5rem; color: #333; cursor: pointer; transition: 0.2s; }
+.star:hover, .star:hover ~ .star, .star.active, .star.active ~ .star { color: goldenrod; }
+
+.comment-card { 
+    background: #0d0f12; 
+    padding: 25px; 
+    border-radius: 10px; 
+    margin-bottom: 20px; 
+    border-left: 5px solid goldenrod; 
+}
+
+.comment-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.user-name { color: goldenrod; font-weight: bold; font-size: 1.1rem; }
+.stars-display { color: goldenrod; letter-spacing: 2px; }
+.comment-footer { display: flex; justify-content: flex-end; margin-top: 15px; }
+
+/* --- OTROS --- */
+.specs-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid #333; border-bottom: 1px solid #333; padding: 20px 0; margin-bottom: 30px; gap: 15px; }
+.spec-item { text-align: center; }
+.spec-item strong { display: block; color: goldenrod; font-size: 0.8rem; margin-bottom: 5px; text-transform: uppercase; }
+.spec-item span { color: #fff; font-size: 1.2rem; }
+#commentText { width: 100%; background: #000; border: 1px solid #333; color: #fff; padding: 15px; border-radius: 8px; margin-bottom: 20px; resize: none; outline: none; }
+#commentText:focus { border-color: goldenrod; }
+.margin-top-40 { margin-top: 40px; }
+
+@media (max-width: 768px) { 
+    
+    .info-principal { flex-direction: column; } 
+    .detalles-compra h1 { font-size: 2.2rem; } 
+}
+
+/* Fuerza el color rojo cuando el botón tiene la clase .active */
+.btn-favorito.active {
+    border-color: #ff4444 !important;
+    background-color: rgba(255, 68, 68, 0.1) !important;
+}
+
+.btn-favorito.active .corazon {
+    color: #ff4444 !important; /* Rojo vibrante */
+}
+
+.btn-favorito.active .texto-fav {
+    color: #ff4444 !important;
+}

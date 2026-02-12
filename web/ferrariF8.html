@@ -1,47 +1,73 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>D&N Motors</title>
+    <title>Ferrari F8 Tributo | D&N Motors</title>
     <link rel="icon" type="image/png" href="./imgs/logoPest.png">
-    <link rel="stylesheet" href="../css/cochesIndividual.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/vehiculos2.css">
+    <link rel="stylesheet" href="./css/detalle_reseñas.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+
     <header class="header">
         <div class="logo">
-            <a href="index.html">
-            <img src="./imgs/logo3.png" alt="D&N Motors Logo">
-            </a>
+            <a href="index.html"><img src="./imgs/logo3.png" alt="D&N Motors"></a>
         </div>
         <div class="user-menu">
-    <input type="checkbox" id="toggleMenu">
-    <label for="toggleMenu">
-        <img src="./imgs/menu1.png" class="user-avatar" alt="Usuario">
-    </label>
-
-    <ul class="dropdown">
-        <li><a href="./auth/profile.php">Perfil</a></li>
-        <li><a href="./auth/login.php">Iniciar sesión</a></li>
-        <li><a href="./auth/register.php">Registrarse</a></li>
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="coches.html">Coches de lujo</a></li>
-        <li><a href="motos.html">Motos Superdeportivas</a></li>
-        <li><a href="clasicos.html">Coches clásicos</a></li>
-        <li><a href="formulario.php">Contacto</a></li>
-    </ul>
-    </div>
+            <input type="checkbox" id="toggleMenu" style="display: none;">
+            <label for="toggleMenu"><img src="./imgs/menu1.png" class="user-avatar" alt="Menú"></label>
+            <ul class="dropdown">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="favoritos.html" style="color: #ff4444;">❤ Mis Favoritos</a></li>
+                <li><a href="coches.html">Coches de lujo</a></li>
+                <li><a href="formulario.php">Contacto</a></li>
+            </ul>
+        </div>
     </header>
 
-    <section class="hero1">
-        <img src="./imgs/f8.jpg" class="hero1-image">
+    <main class="detalle-container">
+        <section class="info-principal">
+            <div class="galeria-vip">
+                <img src="./imgs/ferrari1.jpg" alt="Ferrari F8">
+            </div>
+            
+            <div class="detalles-compra">
+                <span class="badge-lujo">Disponible</span>
+                <h1>Ferrari F8 Tributo</h1>
+                <p class="precio">325.000 €</p>
+                
+                <div class="specs-grid">
+                    <div class="spec-item"><strong>Motor</strong><span>V8 Biturbo</span></div>
+                    <div class="spec-item"><strong>Potencia</strong><span>720 CV</span></div>
+                    <div class="spec-item"><strong>0-100</strong><span>2.9s</span></div>
+                </div>
 
-    <div class="hero1-content">
-        <h1>Ferrari F8 Tributo</h1>
-     </div>
-    </section>
+                <div class="acciones-compra">
+                    <button class="btn-reserva" onclick="window.location.href='reserva.html'">RESERVAR AHORA</button>
+                    <button id="btn-favorito" class="btn-favorito">
+                        <span class="corazon">❤</span> <span class="texto-fav">Añadir a favoritos</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="reviews-section">
+            <h2 class="gold-title">Opiniones de Clientes</h2>
+            <form id="commentForm">
+                <div class="rating-input">
+                    <span class="star" data-value="5">★</span><span class="star" data-value="4">★</span>
+                    <span class="star" data-value="3">★</span><span class="star" data-value="2">★</span>
+                    <span class="star" data-value="1">★</span>
+                </div>
+                <textarea id="commentText" placeholder="Escribe tu reseña..." required></textarea>
+                <button type="submit" class="btn-reserva btn-small">Publicar Reseña</button>
+            </form>
+            <div id="commentsContainer" class="margin-top-40"></div>
+        </section>
+    </main>
+
+    <script src="js/comentarios.js"></script>
 </body>
 </html>

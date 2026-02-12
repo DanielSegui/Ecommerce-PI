@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mi Garaje | D&N Motors</title>
+    <link rel="stylesheet" href="./css/vehiculos2.css">
+    <link rel="stylesheet" href="./css/detalle_reseñas.css">
+</head>
+<body style="background: #0d0f12; color: white; font-family: 'Montserrat', sans-serif;">
+    <header class="header">
+        <div class="logo"><a href="index.html"><img src="./imgs/logo3.png" style="height:50px;"></a></div>
+    </header>
+
+    <main class="detalle-container">
+        <h1 class="gold-title">Mi Garaje de Favoritos</h1>
+        <div id="contenedor-favs" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px;">
+            </div>
+    </main>
+
+    <script>
+        const cochesData = {
+            "ferrari_f8_tributo": {
+                name: "Ferrari F8 Tributo",
+                price: "325.000 €",
+                img: "./imgs/ferrari1.jpg",
+                url: "ferrariF8.html"
+            }
+        };
+
+        function mostrarFavs() {
+            const favs = JSON.parse(localStorage.getItem('favs_dn_motors')) || [];
+            const box = document.getElementById('contenedor-favs');
+            box.innerHTML = favs.length ? "" : "<p>Vacío</p>";
+
+            favs.forEach(id => {
+                const c = cochesData[id];
+                if(c) {
+                    box.innerHTML += `
+                        <div class="comment-card">
+                            <img src="${c.img}" style="width:100%; border-radius:8px;">
+                            <h2 style="color:goldenrod;">${c.name}</h2>
+                            <p>${c.price}</p>
+                            <a href="${c.url}" class="btn-reserva btn-small" style="text-decoration:none;">VER COCHE</a>
+                        </div>`;
+                }
+            });
+        }
+        mostrarFavs();
+    </script>
+</body>
+</html>
