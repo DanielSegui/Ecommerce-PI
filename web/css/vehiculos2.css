@@ -229,3 +229,39 @@ body {
     border-color: #fff !important;
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.2) !important;
 }
+
+.footer {
+    background-color: black;
+    padding: 40px 10%;
+    font-size: 1.1rem;
+    overflow: hidden; /* limpiar floats */
+    color: rgb(255, 255, 255);
+}
+
+.footer-left {
+    float: left;
+    width: 40%;
+}
+
+.social {
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.social i {
+    margin-right: 10px;
+}
+
+.footer-right {
+    float: right;
+    width: 55%;
+}
+
+.footer-right ul {
+    list-style: none;
+    margin-top: 10px;
+}
+
+.footer-right li {
+    margin-bottom: 5px;
+}
