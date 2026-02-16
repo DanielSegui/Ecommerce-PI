@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>D&N Motors</title>
+    <title>Coches Clásicos | D&N Motors</title>
     <link rel="icon" type="image/png" href="./imgs/logoPest.png">
     <link rel="stylesheet" href="./css/vehiculos2.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,32 +18,117 @@
             </a>
         </div>
         <div class="user-menu">
-    <input type="checkbox" id="toggleMenu">
-    <label for="toggleMenu">
-        <img src="./imgs/menu1.png" class="user-avatar" alt="Usuario">
-    </label>
-
-    <ul class="dropdown">
-        <li><a href="./auth/profile.php">Perfil</a></li>
-        <li><a href="./auth/login.php">Iniciar sesión</a></li>
-        <li><a href="./auth/register.php">Registrarse</a></li>
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="coches.html">Coches de lujo</a></li>
-        <li><a href="motos.html">Motos Superdeportivas</a></li>
-        <li><a href="clasicos.html">Coches clásicos</a></li>
-        <li><a href="formulario.php">Contacto</a></li>
-    </ul>
-    </div>
+            <input type="checkbox" id="toggleMenu" style="display: none;">
+            <label for="toggleMenu" tabindex="0">
+                <img src="./imgs/menu1.png" class="user-avatar" alt="Usuario">
+            </label>
+            <ul class="dropdown">
+                <li><a href="./auth/profile.php">Perfil</a></li>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="coches.html">Coches de lujo</a></li>
+                <li><a href="clasicos.html">Coches clásicos</a></li>
+                <li><a href="favoritos.html" style="color: #ff4444;">❤ Mis Favoritos</a></li>
+                <li><a href="formulario.php">Contacto</a></li>
+            </ul>
+        </div>
     </header>
 
     <section class="hero1">
         <img src="./imgs/clasico.jpg" class="hero1-image">
-
-    <div class="hero1-content">
-        <h1>Coches Clásicos</h1>
-    <p>Donde la pasión por los coches se convierte en confianza</p>
-     </div>
+        <div class="hero1-content">
+            <h1>Coches Clásicos</h1>
+            <p>La elegancia que nunca pasa de moda</p>
+        </div>
     </section>
 
+    <section class="coches">
+        <div class="search-section" style="padding: 30px 20px; text-align: center; background: #0D0F12;">
+        <div style="max-width: 600px; margin: 0 auto; position: relative;">
+            <input type="text" id="searchInput" placeholder="Busca tu modelo ideal..." 
+                   style="width: 100%; padding: 15px 25px; border-radius: 50px; border: 2px solid #b8860b; background: #111; color: white; font-family: 'Montserrat', sans-serif; outline: none; transition: 0.3s; box-shadow: 0 0 15px rgba(184, 134, 11, 0.2);">
+            <span style="position: absolute; right: 25px; top: 15px; color: #b8860b; font-size: 1.2rem;">🔍</span>
+        </div>
+        <p id="searchCounter" style="color: #b8860b; margin-top: 15px; font-size: 0.9rem; font-weight: 600; min-height: 20px;"></p>
+    </div>
+        <h2 class="coches-titulo">Joyas Históricas</h2><br>
+
+        <div class="coches-tienda">
+            <div class="coches-card">
+                <a href="ferrari250.html">
+                <img src="./imgs/ferrari250.jpg" alt="Ferrari 250 GTO">
+                <h3>Ferrari 250 GTO</h3>
+                </a>
+            </div>
+
+            <div class="coches-card">
+                <img src="./imgs/mercedes300G.webp" alt="Mercedes-Benz 300 SL">
+                <h3>Mercedes 300 SL Gullwing</h3>
+            </div>
+
+            <div class="coches-card">
+                <img src="./imgs/porsche356.jpg" alt="Porsche 356">
+                <h3>Porsche 356</h3>
+            </div>
+
+            <div class="coches-card">
+                <img src="./imgs/shelby.webp" alt="Shelby Cobra">
+                <h3>Shelby Cobra</h3>
+            </div>
+
+            <div class="coches-card">
+                <img src="./imgs/jaguarE.webp" alt="Jaguar E-Type">
+                <h3>Jaguar E-Type</h3>
+            </div>
+
+            <div class="coches-card">
+                <img src="./imgs/mustang1964.jpg" alt="Ford Mustang 1964">
+                <h3>Ford Mustang 1964</h3>
+            </div>
+        </div>    
+    </section>
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('searchInput');
+    const searchCounter = document.getElementById('searchCounter');
+    const cards = document.querySelectorAll('.coches-card');
+
+    searchInput.addEventListener('keyup', function() {
+        const query = searchInput.value.toLowerCase().trim();
+        let count = 0;
+
+        cards.forEach(card => {
+            // Buscamos dentro del H3 para el nombre del modelo
+            const title = card.querySelector('h3').textContent.toLowerCase();
+            
+            if (title.includes(query)) {
+                card.style.display = "block";
+                card.style.opacity = "1";
+                card.style.transform = "scale(1)";
+                count++;
+            } else {
+                card.style.display = "none";
+                card.style.opacity = "0";
+                card.style.transform = "scale(0.8)";
+            }
+        });
+
+        // Lógica del contador
+        if (query === "") {
+            searchCounter.textContent = ""; // Oculto si no hay búsqueda
+        } else if (count === 0) {
+            searchCounter.textContent = "No se han encontrado modelos que coincidan.";
+            searchCounter.style.color = "#ff4444"; // Rojo si no hay nada
+        } else {
+            searchCounter.textContent = `Se han encontrado ${count} modelo(s) disponible(s).`;
+            searchCounter.style.color = "#b8860b"; // Dorado si hay éxito
+        }
+    });
+
+    // Añadimos suavizado a las tarjetas
+    cards.forEach(card => {
+        card.style.transition = "all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+    });
+});
+</script>
 </body>
 </html>

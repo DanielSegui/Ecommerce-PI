@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMW S1000RR | D&N Motors</title>
+    <link rel="icon" type="image/png" href="./imgs/logoPest.png">
+    
+    <link rel="stylesheet" href="./css/vehiculos2.css"> 
+    <link rel="stylesheet" href="./css/detalle_reseñas.css"> 
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo">
+            <a href="index.html"><img src="./imgs/logo3.png" alt="D&N Motors"></a>
+        </div>
+        <div class="user-menu">
+            <input type="checkbox" id="toggleMenu" style="display: none;">
+            <label for="toggleMenu"><img src="./imgs/menu1.png" class="user-avatar" alt="Menú"></label>
+            <ul class="dropdown">
+                <li><a href="./auth/profile.php">Perfil</a></li>
+                <li><a href="./auth/login.php">Iniciar sesión</a></li>
+                <li><a href="./auth/register.php">Registrarse</a></li>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="coches.html">Coches de lujo</a></li>
+                <li><a href="motos.html">Motos Superdeportivas</a></li>
+                <li><a href="clasicos.html">Coches clásicos</a></li>
+                <li><a href="favoritos.html" style="color: #ff4444;">❤ Mis Favoritos</a></li>
+                <li><a href="formulario.php">Contacto</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main class="detalle-container">
+        <section class="info-principal">
+            <div class="galeria-vip">
+                <img src="./imgs/motobmw.webp" alt="BMW S1000RR">
+            </div>
+            
+            <div class="detalles-compra">
+                <span class="badge-red">No disponible</span>
+                <br><br>
+                <h1>BMW S1000RR</h1>
+                <p class="precio-especial">23.000 €</p>
+                
+                <div class="specs-grid">
+                    <div class="spec-item"><strong>Cilindrada</strong><span>999 cc</span></div>
+                    <div class="spec-item"><strong>Potencia</strong><span>210 CV</span></div>
+                    <div class="spec-item"><strong>Peso</strong><span>197 kg</span></div>
+                </div>
+
+                <div class="acciones-compra">
+                    <button class="btn-reserva" onclick="window.location.href='reserva.html?modelo=BMW S1000RR'">
+                        RESERVAR AHORA
+                    </button>
+                    <button id="btn-favorito" class="btn-favorito">
+                        <span class="corazon">❤</span> <span class="texto-fav">Añadir a favoritos</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="reviews-section">
+            <h2 class="gold-title">Experiencias de Pilotos</h2>
+            <form id="commentForm">
+                <div class="rating-input">
+                    <span class="star" data-value="5">★</span><span class="star" data-value="4">★</span>
+                    <span class="star" data-value="3">★</span><span class="star" data-value="2">★</span>
+                    <span class="star" data-value="1">★</span>
+                </div>
+                <textarea id="commentText" placeholder="¿Qué te parece esta bestia de BMW?" required></textarea>
+                <button type="submit" class="btn-reserva btn-small">Publicar Opinión</button>
+            </form>
+            <div id="commentsContainer" class="margin-top-40"></div>
+        </section>
+    </main>
+
+   <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('commentForm');
+    const caja = document.getElementById('commentsContainer');
+    // Detectamos si es ferrari_f8, ducati_v4, etc.
+    const vehiculoActual = window.location.pathname.split('/').pop().replace('.html', '');
+
+    function cargar() {
+        fetch(`gestion_comentarios.php?vehiculo=${vehiculoActual}`)
+            .then(res => res.json())
+            .then(data => {
+                caja.innerHTML = '';
+                data.forEach(c => {
+                    caja.innerHTML += `
+                        <div style="background:#111; padding:15px; margin-bottom:10px; border-left:3px solid gold; position:relative;">
+                            <p style="color:white; margin:0 0 10px 0;">${c.texto}</p>
+                            <small style="color:gray;">${c.fecha}</small>
+                            <button onclick="borrarComentario('${c.id}')" style="position:absolute; right:10px; top:10px; background:none; border:none; color:red; cursor:pointer;">✕ Borrar</button>
+                        </div>`;
+                });
+            });
+    }
+
+    // Función global para que el botón "Borrar" funcione
+    window.borrarComentario = function(id) {
+        if(!confirm("¿Eliminar este comentario?")) return;
+        const fd = new FormData();
+        fd.append('accion', 'borrar');
+        fd.append('id', id);
+        
+        fetch('gestion_comentarios.php', { method: 'POST', body: fd })
+            .then(() => cargar());
+    };
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const texto = document.getElementById('commentText').value;
+        const datos = new FormData();
+        datos.append('accion', 'crear');
+        datos.append('texto', texto);
+        datos.append('vehiculo', vehiculoActual);
+
+        fetch('gestion_comentarios.php', { method: 'POST', body: datos })
+            .then(res => res.json())
+            .then(() => {
+                document.getElementById('commentText').value = '';
+                cargar();
+            });
+    });
+
+    cargar();
+});
+</script>
+</body>
+</html>

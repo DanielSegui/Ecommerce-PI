@@ -2,137 +2,86 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Finalizar Reserva - D&N Motors</title>
+    <title>Confirmar Reserva | D&N Motors</title>
     <link rel="stylesheet" href="./css/vehiculos2.css">
-    <link rel="stylesheet" href="./css/detalle.css">
+    <link rel="stylesheet" href="./css/detalle_reseñas.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        .reserva-container { max-width: 600px; margin: 80px auto; background: #111; padding: 40px; border-radius: 15px; border: 1px solid goldenrod; box-shadow: 0 0 30px rgba(218, 165, 32, 0.2); }
+        .reserva-input { width: 100%; padding: 15px; margin: 15px 0; background: #000; border: 1px solid #333; color: #fff; border-radius: 5px; font-family: 'Montserrat', sans-serif; }
+        .reserva-label { color: goldenrod; font-weight: bold; font-size: 0.9rem; text-transform: uppercase; }
+    </style>
 </head>
-<body class="checkout-body">
-    <div class="checkout-container">
-        <div class="checkout-card">
-            <h2>Finalizar Reserva</h2>
-            <p class="subtext">Estás a un paso de reservar tu <strong>Ferrari F8 Tributo</strong>. Se realizará un depósito de garantía de 5.000 €.</p>
+<body style="background: #000; color: #fff; font-family: 'Montserrat', sans-serif;">
+
+    <div class="reserva-container">
+        <h1 id="header-reserva" style="color: goldenrod; font-size: 2rem; margin-bottom: 10px;">Reserva de Vehículo</h1>
+        <p style="color: #888; margin-bottom: 30px;">Complete sus datos para formalizar la prioridad de compra.</p>
+        
+        <form id="formReserva">
+            <label class="reserva-label">Nombre Completo del Titular</label>
+            <input type="text" id="nombreCliente" class="reserva-input" placeholder="Ej: Juan Pérez" required>
             
-            <form class="reserva-form">
-                <div class="input-group">
-                    <label>Nombre del Titular</label>
-                    <input type="text" placeholder="Juan Pérez" required>
-                </div>
-
-                <div class="input-group">
-                    <label>Número de Tarjeta</label>
-                    <input type="text" placeholder="0000 0000 0000 0000" maxlength="16" required>
-                </div>
-
-                <div class="row-inputs">
-                    <div class="input-group">
-                        <label>Caducidad</label>
-                        <input type="text" placeholder="MM/AA" maxlength="5" required>
-                    </div>
-                    <div class="input-group">
-                        <label>CVC</label>
-                        <input type="text" placeholder="123" maxlength="3" required>
-                    </div>
-                </div>
-
-                <button type="submit" class="btn-pagar">CONFIRMAR PAGO</button>
-            </form>
-            <a href="coches.html" class="volver">Cancelar y volver</a>
-        </div>
+            <label class="reserva-label">Vehículo Seleccionado</label>
+            <input type="text" id="nombreVehiculo" class="reserva-input" readonly>
+            
+            <button type="button" onclick="generarPDF()" class="btn-reserva" style="background: goldenrod; color: #000; border: none; font-weight: 700;">
+                DESCARGAR COMPROBANTE PDF
+            </button>
+        </form>
+        <a href="index.html" style="display: block; text-align: center; margin-top: 20px; color: #555; text-decoration: none;">Cancelar y volver</a>
     </div>
+
+    <script>
+        // Capturar modelo de la URL (Ej: reserva.html?modelo=Ferrari F8 Tributo)
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const modelo = params.get('modelo');
+            if (modelo) {
+                document.getElementById('nombreVehiculo').value = modelo;
+                document.getElementById('header-reserva').innerText = "Reserva: " + modelo;
+            } else {
+                document.getElementById('nombreVehiculo').value = "Vehículo no especificado";
+            }
+        });
+
+        async function generarPDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            const cliente = document.getElementById('nombreCliente').value;
+            const vehiculo = document.getElementById('nombreVehiculo').value;
+
+            if (!cliente) { alert("Introduzca su nombre para la reserva"); return; }
+
+            // Diseño del PDF
+            doc.setFillColor(0, 0, 0);
+            doc.rect(0, 0, 210, 50, 'F');
+            doc.setTextColor(218, 165, 32);
+            doc.setFontSize(26);
+            doc.text("D&N MOTORS", 105, 30, { align: "center" });
+            
+            doc.setTextColor(0, 0, 0);
+            doc.setFontSize(14);
+            doc.text("CERTIFICADO DE RESERVA", 105, 70, { align: "center" });
+            
+            doc.setFontSize(12);
+            doc.text(`Por la presente, se confirma la reserva a nombre de:`, 20, 90);
+            doc.setFontSize(16);
+            doc.text(cliente.toUpperCase(), 20, 100);
+            
+            doc.setFontSize(12);
+            doc.text(`Vehículo reservado:`, 20, 120);
+            doc.setFontSize(18);
+            doc.setTextColor(218, 165, 32);
+            doc.text(vehiculo, 20, 130);
+            
+            doc.setTextColor(150, 150, 150);
+            doc.setFontSize(10);
+            doc.text("Fecha de emisión: " + new Date().toLocaleString(), 20, 160);
+            doc.text("Este documento garantiza la prioridad de contacto para la compra del vehículo.", 20, 170);
+
+            doc.save(`Reserva_DNMotors_${vehiculo.replace(/\s+/g, '_')}.pdf`);
+        }
+    </script>
 </body>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-
-<script>
-const form = document.querySelector('.reserva-form');
-const btnPagar = document.querySelector('.btn-pagar');
-
-form.addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    // Cambiar estado del botón para dar feedback visual
-    btnPagar.innerText = "PROCESANDO PAGO...";
-    btnPagar.style.opacity = "0.7";
-    btnPagar.disabled = true;
-
-    // Simulamos un pequeño retraso de red (2 segundos)
-    setTimeout(() => {
-        generarPDF();
-        
-        // Mensaje de éxito
-        alert("¡Pago confirmado! Tu reserva se ha generado correctamente y el PDF se está descargando.");
-        
-        // Redirigir al inicio tras la descarga
-        window.location.href = 'index.html';
-    }, 2000);
-});
-
-async function generarPDF() {
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF();
-    
-    // Datos capturados (puedes añadir más campos del formulario si quieres)
-    const nombreCliente = document.querySelector('input[placeholder="Juan Pérez"]').value;
-    const fecha = new Date().toLocaleDateString();
-    const numReferencia = "DN-" + Math.floor(Math.random() * 1000000);
-
-    // --- DISEÑO DEL PDF ---
-    
-    // Fondo oscuro para la cabecera (Simulado)
-    doc.setFillColor(13, 15, 18); // Color #0D0F12
-    doc.rect(0, 0, 210, 40, 'F');
-    
-    // Título / Logo
-    doc.setTextColor(218, 165, 32); // Goldenrod
-    doc.setFontSize(22);
-    doc.setFont("helvetica", "bold");
-    doc.text("D&N MOTORS", 20, 25);
-    
-    doc.setFontSize(10);
-    doc.text("CONTRATO DE RESERVA DE VEHÍCULO", 140, 25);
-
-    // Cuerpo del documento
-    doc.setTextColor(40, 40, 40);
-    doc.setFontSize(12);
-    doc.setFont("helvetica", "normal");
-    
-    doc.text(`Fecha de reserva: ${fecha}`, 20, 60);
-    doc.text(`Nº de Referencia: ${numReferencia}`, 20, 70);
-    
-    doc.setFont("helvetica", "bold");
-    doc.text("DATOS DEL CLIENTE:", 20, 90);
-    doc.setFont("helvetica", "normal");
-    doc.text(`Nombre del titular: ${nombreCliente}`, 20, 100);
-    
-    doc.setFont("helvetica", "bold");
-    doc.text("DETALLES DEL VEHÍCULO:", 20, 120);
-    doc.setFont("helvetica", "normal");
-    doc.text("Vehículo: Ferrari F8 Tributo", 20, 130);
-    doc.text("Depósito realizado: 5.000,00 €", 20, 140);
-    doc.text("Estado: RESERVADO", 20, 150);
-
-    // Línea divisoria
-    doc.setDrawColor(218, 165, 32);
-    doc.line(20, 160, 190, 160);
-
-    // Texto legal pequeño
-    doc.setFontSize(9);
-    doc.setTextColor(100, 100, 100);
-    const textoLegal = "Este documento sirve como comprobante de reserva oficial. El importe depositado será deducido del precio final del vehículo. D&N Motors se compromete a retirar el vehículo de la venta durante los próximos 7 días hábiles.";
-    const splitText = doc.splitTextToSize(textoLegal, 170);
-    doc.text(splitText, 20, 170);
-
-    // Sello de la empresa
-    doc.setDrawColor(218, 165, 32);
-    doc.setLineWidth(1);
-    doc.rect(140, 200, 40, 40); 
-    doc.setFontSize(8);
-    doc.text("SELLO D&N", 148, 215);
-    doc.text("AUTENTICADO", 145, 225);
-
-    // Descarga el PDF
-    doc.save(`Reserva_DN_Motors_${numReferencia}.pdf`);
-}
-</script>
 </html>

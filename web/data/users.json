@@ -44,6 +44,15 @@
             "nom": "Daniel",
             "cognoms": "Segui",
             "data_registre": "2025-12-02T14:47:14+00:00"
+        },
+        {
+            "id": 6,
+            "nom_usuari": "dani",
+            "contrasenya": "$2y$10$cbSdsskBq.Tr9BTiW81mFOq\/Q.LQxyLKlnbD.d8hnHsDJwuCYim2i",
+            "email": "danielseguipons@gmail.com",
+            "nom": "Daniel",
+            "cognoms": "Segu\u00ed",
+            "data_registre": "2026-02-12T15:36:07+00:00"
         }
     ]
 }

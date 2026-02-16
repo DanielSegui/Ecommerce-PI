@@ -46,41 +46,103 @@
     </section>
 
     <section class="coches">
+        <div class="search-section" style="padding: 30px 20px; text-align: center; background: #0D0F12;">
+        <div style="max-width: 600px; margin: 0 auto; position: relative;">
+            <input type="text" id="searchInput" placeholder="Busca tu modelo ideal..." 
+                   style="width: 100%; padding: 15px 25px; border-radius: 50px; border: 2px solid #b8860b; background: #111; color: white; font-family: 'Montserrat', sans-serif; outline: none; transition: 0.3s; box-shadow: 0 0 15px rgba(184, 134, 11, 0.2);">
+            <span style="position: absolute; right: 25px; top: 15px; color: #b8860b; font-size: 1.2rem;">🔍</span>
+        </div>
+        <p id="searchCounter" style="color: #b8860b; margin-top: 15px; font-size: 0.9rem; font-weight: 600; min-height: 20px;"></p>
+    </div>
         <h2 class="coches-titulo">Coches Destacados</h2><br>
 
         <div class="coches-tienda">
             <div class="coches-card">
-                <img src="./imgs/porchse911.jpg" alt="coches superdeportivos">
-                <h3>Porsche 911</h3>
+                <a href="porsche911.html?modelo=Porsche 911 Carrera">
+                <img src="./imgs/porsche911.webp" alt="coches superdeportivos">
+                <h3>Porsche 911 Carrera GTS</h3>
+                </a>
             </div>
 
             <div class="coches-card">
+                <a href="laventador.html?modelo=Lamborghini Aventador">
                 <img src="./imgs/lambo.jpg" alt="coches superdeportivos">
                 <h3>Lamborghini Aventador</h3>
+                </a>
             </div>
 
             <div class="coches-card">
-                <a href="ferrariF8.html">
+                <a href="ferrariF8.html?modelo=Ferrari F8 Tributo">
                 <img src="./imgs/ferrari1.jpg" alt="coches superdeportivos">
                 <h3>Ferrari F8 Tributo</h3>
                 </a>
             </div>
 
             <div class="coches-card">
-                <img src="./imgs/rolls.jpg" alt="coches superdeportivos">
-                <h3>Rolls-Royce</h3>
+                <a href="porscheGT3.html?modelo=Porsche 911 GT3 RS">
+                <img src="./imgs/gt3rs.jpg" alt="coches superdeportivos">
+                <h3>Porsche 911 GT3 RS</h3>
+                </a>
             </div>
 
             <div class="coches-card">
-                <img src="./imgs/bugatti.jpg" alt="coches superdeportivos">
+                <a href="bugattiChiron.html?modelo=Bugatti Chiron">
+                <img src="./imgs/bugattiChiron.jpg" alt="coches superdeportivos">
                 <h3>Bugatti Chiron</h3>
+                </a>
             </div>
 
             <div class="coches-card">
-                <img src="./imgs/astonV.jpg" alt="coches superdeportivos">
-                <h3>Aston Martin Vantage</h3>
+                <a href="jesko.html?modelo=Koenigsegg Jesko">
+                <img src="./imgs/jesko.jpg" alt="coches superdeportivos">
+                <h3>Koenigsegg Jesko</h3>
+                </a>
             </div>
         </div>    
     </section>
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('searchInput');
+    const searchCounter = document.getElementById('searchCounter');
+    const cards = document.querySelectorAll('.coches-card');
+
+    searchInput.addEventListener('keyup', function() {
+        const query = searchInput.value.toLowerCase().trim();
+        let count = 0;
+
+        cards.forEach(card => {
+            // Buscamos dentro del H3 para el nombre del modelo
+            const title = card.querySelector('h3').textContent.toLowerCase();
+            
+            if (title.includes(query)) {
+                card.style.display = "block";
+                card.style.opacity = "1";
+                card.style.transform = "scale(1)";
+                count++;
+            } else {
+                card.style.display = "none";
+                card.style.opacity = "0";
+                card.style.transform = "scale(0.8)";
+            }
+        });
+
+        // Lógica del contador
+        if (query === "") {
+            searchCounter.textContent = ""; // Oculto si no hay búsqueda
+        } else if (count === 0) {
+            searchCounter.textContent = "No se han encontrado modelos que coincidan.";
+            searchCounter.style.color = "#ff4444"; // Rojo si no hay nada
+        } else {
+            searchCounter.textContent = `Se han encontrado ${count} modelo(s) disponible(s).`;
+            searchCounter.style.color = "#b8860b"; // Dorado si hay éxito
+        }
+    });
+
+    // Añadimos suavizado a las tarjetas
+    cards.forEach(card => {
+        card.style.transition = "all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+    });
+});
+</script>
 </body>
 </html>

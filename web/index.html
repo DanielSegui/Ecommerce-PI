@@ -10,6 +10,46 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    
+    <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+    
+    <script type="module">
+    import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+    createChat({
+        webhookUrl: 'http://localhost:5678/webhook/3c6a9281-f792-4ed9-862f-6930d92af099/chat',
+        showWelcomeMessage: true,
+        title: 'D&N Motors AI',
+        // Esto fuerza el color dorado en la interfaz
+        styleConfiguration: {
+            theme: {
+                '--n8n-chat-primary-color': '#b8860b',
+                '--n8n-chat-button-background': '#b8860b',
+            }
+        },
+        // Esto elimina el "Hi there" y pone tus textos
+        i18n: {
+            en: {
+                title: 'D&N Motors AI',
+                welcomeMessage: 'Bienvenido a D&N Motors. Soy su asesor especializado en alta gama. ¿En qué vehículo está interesado?',
+                inputPlaceholder: 'Escriba su consulta...',
+            }
+        }
+    });
+</script>
+
+<style>
+    /* CSS de emergencia para el color del botón */
+    :root {
+        --n8n-chat-primary-color: #b8860b !important;
+    }
+    .n8n-chat-button {
+        background-color: #b8860b !important;
+    }
+    .n8n-chat-button svg {
+        fill: white !important;
+    }
+</style>
 </head>
 <body>
 
@@ -34,6 +74,7 @@
             <li><a href="coches.html">Coches de lujo</a></li>
             <li><a href="motos.html">Motos Superdeportivas</a></li>
             <li><a href="clasicos.html">Coches clásicos</a></li>
+            <li><a href="favoritos.html" style="color: #ff4444;">❤ Mis Favoritos</a></li>
             <li><a href="formulario.php">Contacto</a></li>
         </ul>
     </div>
@@ -127,7 +168,7 @@
         <button class="carousel-btn next">→</button>
     </div>
 
-    <button class="btn" onclick="window.location.href='formulario.php'">Comencemos</button>
+    <button class="btn" onclick="window.location.href='formulario.php'">Contáctanos</button>
 </section>
 
 <footer class="footer">
