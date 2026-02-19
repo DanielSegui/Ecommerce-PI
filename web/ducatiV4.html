@@ -5,11 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ducati Panigale V4 | D&N Motors</title>
     <link rel="icon" type="image/png" href="./imgs/logoPest.png">
-    
     <link rel="stylesheet" href="./css/vehiculos2.css"> 
     <link rel="stylesheet" href="./css/detalle_reseñas.css"> 
-    
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos para las estrellas interactivas */
+        .rating-input { display: flex; flex-direction: row-reverse; justify-content: flex-end; margin-bottom: 10px; }
+        .rating-input span { font-size: 30px; color: #444; cursor: pointer; transition: color 0.2s; }
+        .rating-input span:hover, .rating-input span:hover ~ span, .rating-input span.active, .rating-input span.active ~ span { color: gold; }
+        .comment-card { background: #111; padding: 20px; margin-bottom: 15px; border-radius: 10px; border-left: 4px solid gold; position: relative; transition: transform 0.3s; }
+        .comment-card:hover { transform: scale(1.01); }
+        .btn-delete { background: #ff4444; color: white; border: none; padding: 5px 12px; border-radius: 5px; cursor: pointer; font-size: 0.75rem; font-weight: bold; }
+        .btn-delete:hover { background: #cc0000; }
+
+        /* NUEVOS ESTILOS FAVORITOS */
+        .btn-favorito.is-active .corazon { color: #ff4444 !important; transform: scale(1.2); }
+        .btn-favorito.is-active .texto-fav { color: #ff4444; font-weight: bold; }
+        .corazon { transition: all 0.3s ease; display: inline-block; font-size: 1.2rem; }
+    </style>
 </head>
 <body>
 
@@ -41,7 +54,7 @@
             </div>
             
             <div class="detalles-compra">
-                <span class="badge-red">No disponible</span>
+                <span class="badge-lujo">Disponible</span>
                 <br><br>
                 <h1>Ducati Panigale V4</h1>
                 <p class="precio-especial">32.000 €</p>
@@ -66,9 +79,11 @@
         <section class="reviews-section">
             <h2 class="gold-title">Experiencias de Pilotos</h2>
             <form id="commentForm">
-                <div class="rating-input">
-                    <span class="star" data-value="5">★</span><span class="star" data-value="4">★</span>
-                    <span class="star" data-value="3">★</span><span class="star" data-value="2">★</span>
+                <div class="rating-input" id="starContainer">
+                    <span class="star" data-value="5">★</span>
+                    <span class="star" data-value="4">★</span>
+                    <span class="star" data-value="3">★</span>
+                    <span class="star" data-value="2">★</span>
                     <span class="star" data-value="1">★</span>
                 </div>
                 <textarea id="commentText" placeholder="¿Qué te parece esta bestia de Ducati?" required></textarea>
@@ -78,57 +93,110 @@
         </section>
     </main>
 
-   <script>
+<script>
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('commentForm');
     const caja = document.getElementById('commentsContainer');
-    // Detectamos si es ferrari_f8, ducati_v4, etc.
+    const stars = document.querySelectorAll('.star');
     const vehiculoActual = window.location.pathname.split('/').pop().replace('.html', '');
+    
+    let valoracionSeleccionada = 5;
 
+    // --- LÓGICA DE ESTRELLAS ---
+    stars.forEach(s => {
+        s.addEventListener('click', function() {
+            valoracionSeleccionada = this.dataset.value;
+            stars.forEach(st => {
+                st.classList.remove('active');
+                if(parseInt(st.dataset.value) <= parseInt(valoracionSeleccionada)) {
+                    st.classList.add('active');
+                }
+            });
+        });
+    });
+
+    // --- CARGAR COMENTARIOS ---
     function cargar() {
         fetch(`gestion_comentarios.php?vehiculo=${vehiculoActual}`)
             .then(res => res.json())
             .then(data => {
                 caja.innerHTML = '';
-                data.forEach(c => {
+                data.comentarios.forEach(c => {
+                    const esDueño = c.usuario === data.usuarioSesion;
+                    const starsDisplay = "★".repeat(c.estrellas) + "☆".repeat(5 - c.estrellas);
+                    
                     caja.innerHTML += `
-                        <div style="background:#111; padding:15px; margin-bottom:10px; border-left:3px solid gold; position:relative;">
-                            <p style="color:white; margin:0 0 10px 0;">${c.texto}</p>
-                            <small style="color:gray;">${c.fecha}</small>
-                            <button onclick="borrarComentario('${c.id}')" style="position:absolute; right:10px; top:10px; background:none; border:none; color:red; cursor:pointer;">✕ Borrar</button>
+                        <div class="comment-card">
+                            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                                <strong style="color:gold; font-size:1.1em;">${c.usuario}</strong>
+                                <span style="color:gold; letter-spacing:2px;">${starsDisplay}</span>
+                            </div>
+                            <p style="color:white; margin:0 0 15px 0; line-height:1.6;">${c.texto}</p>
+                            <div style="display:flex; justify-content:space-between; align-items:center;">
+                                <small style="color:#666;">${c.fecha}</small>
+                                ${esDueño ? `<button onclick="borrarComentario('${c.id}')" class="btn-delete">BORRAR MI RESEÑA</button>` : ''}
+                            </div>
                         </div>`;
                 });
             });
     }
 
-    // Función global para que el botón "Borrar" funcione
+    // --- BORRAR ---
     window.borrarComentario = function(id) {
-        if(!confirm("¿Eliminar este comentario?")) return;
+        if(!confirm("¿Eliminar tu comentario permanentemente?")) return;
         const fd = new FormData();
         fd.append('accion', 'borrar');
         fd.append('id', id);
-        
-        fetch('gestion_comentarios.php', { method: 'POST', body: fd })
-            .then(() => cargar());
+        fetch('gestion_comentarios.php', { method: 'POST', body: fd }).then(() => cargar());
     };
 
+    // --- PUBLICAR ---
     form.addEventListener('submit', function(e) {
         e.preventDefault();
-        const texto = document.getElementById('commentText').value;
         const datos = new FormData();
         datos.append('accion', 'crear');
-        datos.append('texto', texto);
+        datos.append('texto', document.getElementById('commentText').value);
+        datos.append('estrellas', valoracionSeleccionada);
         datos.append('vehiculo', vehiculoActual);
 
         fetch('gestion_comentarios.php', { method: 'POST', body: datos })
-            .then(res => res.json())
             .then(() => {
                 document.getElementById('commentText').value = '';
+                valoracionSeleccionada = 5;
+                stars.forEach(st => st.classList.remove('active'));
                 cargar();
             });
     });
 
     cargar();
+
+    // --- LÓGICA DE FAVORITOS (Ducati Panigale V4 R) ---
+    const btnFav = document.getElementById('btn-favorito');
+    const nombreCoche = "Ducati Panigale V4 R"; // Nombre clave para favoritos.html
+
+    function actualizarUIFavoritos() {
+        let favoritos = JSON.parse(localStorage.getItem('misFavoritos')) || [];
+        if (favoritos.includes(nombreCoche)) {
+            btnFav.classList.add('is-active');
+            btnFav.querySelector('.texto-fav').innerText = "En tus favoritos";
+        } else {
+            btnFav.classList.remove('is-active');
+            btnFav.querySelector('.texto-fav').innerText = "Añadir a favoritos";
+        }
+    }
+
+    btnFav.addEventListener('click', function() {
+        let favoritos = JSON.parse(localStorage.getItem('misFavoritos')) || [];
+        if (favoritos.includes(nombreCoche)) {
+            favoritos = favoritos.filter(c => c !== nombreCoche);
+        } else {
+            favoritos.push(nombreCoche);
+        }
+        localStorage.setItem('misFavoritos', JSON.stringify(favoritos));
+        actualizarUIFavoritos();
+    });
+
+    actualizarUIFavoritos();
 });
 </script>
 </body>

@@ -12,18 +12,24 @@
         /* Estilos para las estrellas interactivas */
         .rating-input { display: flex; flex-direction: row-reverse; justify-content: flex-end; margin-bottom: 10px; }
         .rating-input span { font-size: 30px; color: #444; cursor: pointer; transition: color 0.2s; }
-        .rating-input span:hover, .rating-input span:hover ~ span,
-        .rating-input span.active, .rating-input span.active ~ span { color: gold; }
+        .rating-input span:hover, .rating-input span:hover ~ span, .rating-input span.active, .rating-input span.active ~ span { color: gold; }
         
         .comment-card {
             background: #111; padding: 20px; margin-bottom: 15px; border-radius: 10px;
-            border-left: 4px solid #b8860b; position: relative;
+            border-left: 4px solid #b8860b; position: relative; transition: transform 0.3s;
         }
+        .comment-card:hover { transform: scale(1.01); }
         .btn-delete {
             background: #ff4444; color: white; border: none; padding: 5px 12px;
-            border-radius: 5px; cursor: pointer; font-size: 0.75rem;
+            border-radius: 5px; cursor: pointer; font-size: 0.75rem; font-weight: bold;
         }
+        .btn-delete:hover { background: #cc0000; }
         .gold-title { color: #b8860b; text-transform: uppercase; letter-spacing: 2px; }
+
+        /* NUEVOS ESTILOS FAVORITOS */
+        .btn-favorito.is-active .corazon { color: #ff4444 !important; transform: scale(1.2); }
+        .btn-favorito.is-active .texto-fav { color: #ff4444; font-weight: bold; }
+        .corazon { transition: all 0.3s ease; display: inline-block; font-size: 1.2rem; }
     </style>
 </head>
 <body>
@@ -60,10 +66,6 @@
                 <br><br>
                 <h1>Ferrari 250 GTO (1962)</h1>
                 <p class="precio-especial">Precio Bajo Petición</p>
-
-    <style>
-    
-    </style>
                 
                 <div class="specs-grid">
                     <div class="spec-item"><strong>Motor</strong><span>3.0L V12</span></div>
@@ -72,7 +74,7 @@
                 </div>
 
                 <div class="acciones-compra">
-                    <button class="btn-reserva" style="background: #b8860b;" onclick="window.location.href='reserva.html?modelo=Ferrari 250 GTO'">SOLICITAR RESERVA</button>
+                    <button class="btn-reserva" style="background: #b8860b; border-color: #b8860b;" onclick="window.location.href='reserva.html?modelo=Ferrari 250 GTO'">SOLICITAR RESERVA</button>
                     <button id="btn-favorito" class="btn-favorito">
                         <span class="corazon">❤</span> <span class="texto-fav">Añadir a favoritos</span>
                     </button>
@@ -83,7 +85,7 @@
         <section class="reviews-section">
             <h2 class="gold-title">Reseñas de Expertos</h2>
             <form id="commentForm">
-                <div class="rating-input">
+                <div class="rating-input" id="starContainer">
                     <span class="star" data-value="5">★</span>
                     <span class="star" data-value="4">★</span>
                     <span class="star" data-value="3">★</span>
@@ -91,7 +93,7 @@
                     <span class="star" data-value="1">★</span>
                 </div>
                 <textarea id="commentText" placeholder="Escribe tu valoración histórica..." required></textarea>
-                <button type="submit" class="btn-reserva btn-small" style="background: #b8860b;">Publicar</button>
+                <button type="submit" class="btn-reserva btn-small" style="background: #b8860b; border-color: #b8860b;">Publicar</button>
             </form>
             <div id="commentsContainer" class="margin-top-40"></div>
         </section>
@@ -102,7 +104,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('commentForm');
     const caja = document.getElementById('commentsContainer');
     const stars = document.querySelectorAll('.star');
-    const vehiculoActual = "ferrari_250_gto"; // ID manual para evitar fallos de nombre de archivo
+    const vehiculoActual = "ferrari_250_gto"; 
     
     let valoracionSeleccionada = 5;
 
@@ -117,7 +119,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Cargar con Filtro
+    // Cargar Comentarios
     function cargar() {
         fetch(`gestion_comentarios.php?vehiculo=${vehiculoActual}`)
             .then(res => res.json())
@@ -161,11 +163,41 @@ document.addEventListener('DOMContentLoaded', function() {
         fetch('gestion_comentarios.php', { method: 'POST', body: fd })
             .then(() => {
                 document.getElementById('commentText').value = '';
+                valoracionSeleccionada = 5;
+                stars.forEach(st => st.classList.remove('active'));
                 cargar();
             });
     });
 
     cargar();
+
+    // --- LÓGICA DE FAVORITOS (Ferrari 250 GTO) ---
+    const btnFav = document.getElementById('btn-favorito');
+    const nombreCoche = "Ferrari 250 GTO";
+
+    function actualizarUIFavoritos() {
+        let favoritos = JSON.parse(localStorage.getItem('misFavoritos')) || [];
+        if (favoritos.includes(nombreCoche)) {
+            btnFav.classList.add('is-active');
+            btnFav.querySelector('.texto-fav').innerText = "En tus favoritos";
+        } else {
+            btnFav.classList.remove('is-active');
+            btnFav.querySelector('.texto-fav').innerText = "Añadir a favoritos";
+        }
+    }
+
+    btnFav.addEventListener('click', function() {
+        let favoritos = JSON.parse(localStorage.getItem('misFavoritos')) || [];
+        if (favoritos.includes(nombreCoche)) {
+            favoritos = favoritos.filter(c => c !== nombreCoche);
+        } else {
+            favoritos.push(nombreCoche);
+        }
+        localStorage.setItem('misFavoritos', JSON.stringify(favoritos));
+        actualizarUIFavoritos();
+    });
+
+    actualizarUIFavoritos();
 });
 </script>
 </body>

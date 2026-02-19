@@ -265,3 +265,85 @@ body {
 .footer-right li {
     margin-bottom: 5px;
 }
+
+@media (max-width: 992px) {
+    .split, .split.reverse {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+        padding: 40px 5%;
+    }
+
+    .split-text h2 {
+        font-size: 1.8rem;
+    }
+
+    .hero2-content h1 {
+        font-size: 3.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        height: auto;
+        padding: 5px 15px;
+    }
+
+    .logo img {
+        height: 70px;
+        padding-bottom: 20px;
+    }
+
+    .hero2-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero2-content p {
+        font-size: 1.1rem;
+    }
+
+
+    .categorias {
+        padding: 40px 5%;
+    }
+
+    .categorias-titulo {
+        font-size: 1.8rem;
+    }
+
+    .categorias-texto {
+        width: 100%;
+        font-size: 1rem;
+    }
+
+    .footer-left, .footer-right {
+        float: none;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .footer-right ul {
+        padding: 0;
+    }
+    
+
+    .carousel-container {
+        max-width: 90% !important;
+    }
+    
+    .carousel-btn {
+        font-size: 1.8rem;
+    }
+}
+
+/* Pantallas muy pequeñas */
+@media (max-width: 480px) {
+    .hero2-content h1 {
+        font-size: 2rem;
+    }
+    
+    .cat-card img {
+        height: 150px;
+    }
+}

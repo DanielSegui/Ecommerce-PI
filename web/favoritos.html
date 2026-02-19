@@ -2,50 +2,155 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Garaje | D&N Motors</title>
+    <link rel="icon" type="image/png" href="./imgs/logoPest.png">
     <link rel="stylesheet" href="./css/vehiculos2.css">
     <link rel="stylesheet" href="./css/detalle_reseñas.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ESTILO ÚNICO PARA EL GARAJE - No afecta a otras páginas */
+        .g-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .g-card {
+            background: #111;
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .g-card:hover { border-color: goldenrod; transform: translateY(-5px); }
+
+        .g-img-container {
+            width: 100%;
+            height: 160px; /* Tamaño pequeño controlado para el grid */
+            overflow: hidden;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .g-img-container img {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;
+        }
+
+        .g-titulo {
+            font-size: 1.1rem !important;
+            color: white;
+            text-transform: uppercase;
+            margin-bottom: 10px !important;
+            min-height: 40px; /* Alineación por si el título es largo */
+        }
+
+        .btn-borrar {
+            background: transparent;
+            color: #ff4444;
+            border: 1px solid #ff4444;
+            width: 100%;
+            padding: 8px;
+            margin-top: 10px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        
+        .btn-borrar:hover {
+            background: #ff4444;
+            color: white;
+        }
+    </style>
 </head>
-<body style="background: #0d0f12; color: white; font-family: 'Montserrat', sans-serif;">
+<body style="background: #0d0f12; color: white;">
+
     <header class="header">
-        <div class="logo"><a href="index.html"><img src="./imgs/logo3.png" style="height:50px;"></a></div>
+        <div class="logo">
+            <a href="index.html"><img src="./imgs/logo3.png" alt="D&N Motors"></a>
+        </div>
+        <div class="user-menu">
+            <input type="checkbox" id="toggleMenu" style="display: none;">
+            <label for="toggleMenu" style="cursor: pointer;">
+                <img src="./imgs/menu1.png" class="user-avatar" alt="Menú">
+            </label>
+            <ul class="dropdown">
+                <li><a href="./auth/profile.php">Perfil</a></li>
+                <li><a href="./auth/login.php">Iniciar sesión</a></li>
+                <li><a href="./auth/register.php">Registrarse</a></li>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="coches.html">Coches de lujo</a></li>
+                <li><a href="motos.html">Motos Superdeportivas</a></li>
+                <li><a href="clasicos.html">Coches clásicos</a></li>
+                <li><a href="favoritos.html" style="color: #ff4444;">❤ Mis Favoritos</a></li>
+                <li><a href="formulario.php">Contacto</a></li>
+            </ul>
+        </div>
     </header>
 
     <main class="detalle-container">
-        <h1 class="gold-title">Mi Garaje de Favoritos</h1>
-        <div id="contenedor-favs" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px;">
+        <h1 class="gold-title" style="text-align: center; font-size: 2.5rem;">Mi Garaje Personal</h1>
+        <div id="contenedor-favs" class="g-grid">
             </div>
     </main>
 
     <script>
+        // Diccionario con los datos de todos tus vehículos
         const cochesData = {
-            "ferrari_f8_tributo": {
-                name: "Ferrari F8 Tributo",
-                price: "325.000 €",
-                img: "./imgs/ferrari1.jpg",
-                url: "ferrariF8.html"
-            }
+            "Porsche 911 Carrera GTS": { price: "180.000 €", img: "./imgs/porsche911.webp", url: "porsche911.html" },
+            "Ferrari F8 Tributo": { price: "325.000 €", img: "./imgs/ferrari1.jpg", url: "ferrariF8.html" },
+            "Lamborghini Aventador": { price: "460.000 €", img: "./imgs/lambo.jpg", url: "laventador.html" },
+            "Ducati Panigale V4 R": { price: "32.000 €", img: "./imgs/ducatip.webp", url: "ducatiV4.html" },
+            "Ferrari 250 GTO": { price: "Consultar", img: "./imgs/ferrari250.jpg", url: "ferrari250.html" },
         };
 
         function mostrarFavs() {
-            const favs = JSON.parse(localStorage.getItem('favs_dn_motors')) || [];
+            const favs = JSON.parse(localStorage.getItem('misFavoritos')) || [];
             const box = document.getElementById('contenedor-favs');
-            box.innerHTML = favs.length ? "" : "<p>Vacío</p>";
+            
+            if (favs.length === 0) {
+                box.innerHTML = `
+                    <div style="grid-column: 1/-1; text-align: center; padding-top: 100px;">
+                        <p style="color: #666; font-size: 1.2rem;">Tu garaje está vacío en este momento.</p>
+                        <a href="coches.html" class="btn-reserva" style="display: inline-block; margin-top: 20px; text-decoration: none;">EXPLORAR CATÁLOGO</a>
+                    </div>`;
+                return;
+            }
 
-            favs.forEach(id => {
-                const c = cochesData[id];
+            box.innerHTML = "";
+            favs.forEach(nombre => {
+                const c = cochesData[nombre];
                 if(c) {
                     box.innerHTML += `
-                        <div class="comment-card">
-                            <img src="${c.img}" style="width:100%; border-radius:8px;">
-                            <h2 style="color:goldenrod;">${c.name}</h2>
-                            <p>${c.price}</p>
-                            <a href="${c.url}" class="btn-reserva btn-small" style="text-decoration:none;">VER COCHE</a>
+                        <div class="g-card">
+                            <div class="g-img-container">
+                                <img src="${c.img}" alt="${nombre}" onerror="this.src='./imgs/logo3.png';">
+                            </div>
+                            <h3 class="g-titulo">${nombre}</h3>
+                            <p style="color: goldenrod; font-weight: bold; font-size: 1.2rem;">${c.price}</p>
+                            <a href="${c.url}" class="btn-reserva" style="padding: 10px; font-size: 0.8rem; margin-top: 15px; display: block; text-align: center; text-decoration: none;">VER DETALLES</a>
+                            <button onclick="eliminarFav('${nombre}')" class="btn-borrar">ELIMINAR DEL GARAJE</button>
                         </div>`;
                 }
             });
         }
-        mostrarFavs();
+
+        function eliminarFav(nombre) {
+            if(!confirm(`¿Seguro que quieres sacar el ${nombre} de tu garaje?`)) return;
+            let favoritos = JSON.parse(localStorage.getItem('misFavoritos')) || [];
+            favoritos = favoritos.filter(c => c !== nombre);
+            localStorage.setItem('misFavoritos', JSON.stringify(favoritos));
+            mostrarFavs();
+        }
+
+        document.addEventListener('DOMContentLoaded', mostrarFavs);
     </script>
 </body>
 </html>
